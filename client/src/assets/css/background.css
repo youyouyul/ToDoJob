@@ -1,0 +1,8 @@
+body {
+    height: 100vh;
+    background-image: url('../../assets/image/bgImg.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size : cover;
+    background: url('../../assets/image/bgImg.jpg') no-repeat center/cover;
+}

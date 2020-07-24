@@ -13,5 +13,9 @@ const userSchema = mongoose.Schema({
     password: {
         type: String,
         minlength: 8
+    },
+    comment: {
+        type: String,
+        maxlength: 50
     }
 })

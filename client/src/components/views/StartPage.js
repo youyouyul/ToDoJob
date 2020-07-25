@@ -1,45 +1,31 @@
 import React from 'react';
 import '../../assets/css/fonts.css';
-import '../../assets/css/background.css';
+import '../../assets/css/startPage.css';
 
 function StartPage() {
-    const styleText = {
-        margin: 'auto',
-        marginLeft: '60%',
-        marginTop: '15%'
-    };
-
-    const styleBody = {
-        display: 'flex', 
-        justifyContent: 'center', 
-        alignItems: 'center',
-    }
-
-    const styleFoot = {
-        display: 'flex', 
-        justifyContent: 'center', 
-        alignItems: 'center',
-        marginLeft: '10%',
-        padding: '0 20px'
-    }
-
-    const styleFontColor = {
-        color: 'red'
-    }
-
     return (
-        <div style={ styleText }>
-            <div style={ styleBody }>
-                <p>You're <span style={ styleFontColor }>BRAVER</span> than you believe,</p>
+        <div className="start">
+            <div style={{ textAlign: 'center', paddingTop: '1%'}}>
+                    <p style={{ fontSize: '3rem', margin: '0'}}>What To Do for a Job ?</p>
             </div>
-            <div style={ styleBody }>
-                <p><span style={ styleFontColor }>STRONGER</span> than you seem,</p>
+            <div className="startLogin" style={{ textAlign: 'center', paddingTop: '10%'}}>
+                <a href='/login'>Sign In</a>
+                <span> | </span>
+                <a href='/register'>Sign Up</a>
             </div>
-            <div style={ styleBody }>
-                <p>and <span style={ styleFontColor }>SMARTER</span> than you think</p>
-            </div>
-            <div style={ styleFoot }>
-                <p>- winnie the pooh -</p>
+            <div className="startBody">
+                <div className="startText">
+                    <p>You're <span style={{ color: 'red'}}>BRAVER</span> than you believe,</p>
+                </div>
+                <div className="startText">
+                    <p><span style={{ color: 'red'}}>STRONGER</span> than you seem,</p>
+                </div>
+                <div className="startText">
+                    <p>and <span style={{ color: 'red'}}>SMARTER</span> than you think</p>
+                </div>
+                <div className="startText">
+                    <p>- winnie the pooh -</p>
+                </div>
             </div>
         </div>
     )

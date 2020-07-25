@@ -1,0 +1,42 @@
+.start {
+    background-image: url('../../assets/image/bgImg.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size : contain;
+    background: url('../../assets/image/bgImg.jpg') no-repeat center/cover;
+
+    border: 0;
+    padding: 0; 
+    height: 100vh; 
+
+    justify-content: center;
+    align-items: center;
+}
+
+.startBody  {
+    margin-top: 5%;
+    margin-right: 5%;
+    float: right;
+    padding: 10px 30px;
+}
+
+.startBody .startText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+};
+
+.startLogin  {
+    display: flex;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.startLogin a {
+    display: inline-block;
+    padding: 0 20px;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+}
+

@@ -14,7 +14,7 @@
 }
 
 .startBody  {
-    margin-top: 5%;
+    margin-top: 10%;
     margin-right: 5%;
     float: right;
     padding: 10px 30px;
@@ -24,6 +24,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 10px 30px;
 };
 
 .startLogin  {

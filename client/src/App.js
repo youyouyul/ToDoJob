@@ -7,11 +7,13 @@ import Register from './components/views/Register';
 function App() {
   return (
     <Suspense fallback={(<div>Loading...</div>)}>
+      <div className="app">
         <Switch>
           <Route exact path="/" component={StartPage} />
           <Route exact path="/login" component={Login} />  
           <Route exact path="/register" component={Register} />    
         </Switch>
+      </div>
     </Suspense>
   );
 }

@@ -3,9 +3,10 @@ import '../../assets/css/fonts.css';
 import '../../assets/css/startPage.css';
 
 function StartPage() {
+
     return (
-        <div className="start">
-            <div style={{ textAlign: 'center', paddingTop: '1%'}}>
+        <div className="start fontStyle">
+            <div className="font-semibold" style={{ textAlign: 'center', paddingTop: '5%'}}>
                     <p style={{ fontSize: '3rem', margin: '0'}}>What To Do for a Job ?</p>
             </div>
             <div className="startLogin" style={{ textAlign: 'center', paddingTop: '10%'}}>

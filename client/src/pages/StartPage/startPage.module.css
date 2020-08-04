@@ -13,31 +13,33 @@
     align-items: center;
 }
 
+.startTitle {
+    font-weight: bold;
+    text-align: center;
+    padding-top: 5%;
+    font-size: 3rem;
+}
+
 .startBody  {
-    margin-top: 10%;
+    margin-top: 5%;
     margin-right: 5%;
     float: right;
     padding: 10px 30px;
 }
 
-.startBody .startText {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 30px;
-};
-
 .startLogin  {
     display: flex;
     text-align: center;
     vertical-align: middle;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10%;
 }
 
 .startLogin a {
     display: inline-block;
     padding: 0 20px;
     justify-content: center;
-    align-items: center;
     font-size: 2rem;
 }
 

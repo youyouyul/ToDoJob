@@ -1,0 +1,106 @@
+.box {
+    text-align: center;
+    padding-top: 4rem;
+}
+
+.body {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.formBox {
+    align-items: center;
+    width: 100%;
+    max-width: 20rem;
+}
+
+.form {
+    background-color: white;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border-radius: 0.25rem;
+    padding-right: 2rem;
+    padding-left: 2rem;
+    padding-top: 1.5rem;
+    padding-bottom: 2rem;
+    margin-bottom: 1rem;
+}
+
+.inputBox {
+    margin-bottom: 1rem;
+}
+
+.label {
+    display: block;
+    color: gray;
+    font-size: small;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.loginPw {
+    margin-bottom: 1.5rem;
+}
+
+.input {
+    box-shadow: 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    appearance: none;
+    border: 1rem;
+    border-radius: 0.25rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-right: 0.75rem;
+    padding-left: 0.75rem;
+    color: gray;
+    line-height: 1.25;
+    width: 100%;
+}
+
+.input:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+}
+
+.signIn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.signUp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn {
+    background-color: blueviolet;
+    color: white;
+    font-weight: bold;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-radius: 0.25rem;
+}
+
+.btn:hover {
+    background-color: purple;
+}
+
+.btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+}
+
+.pwText {
+    display: inline-block;
+    align-items: baseline;
+    font-weight: bold;
+    font-size: small;
+    color: blueviolet;
+}
+
+.pwText:hover {
+    color: purple;
+}

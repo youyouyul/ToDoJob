@@ -1,0 +1,8 @@
+.boxContainer {
+    padding: 2rem 10rem;
+    justify-content: center;
+}
+
+.boxToDo {
+    border: 1px solid #bcbcbc;
+}

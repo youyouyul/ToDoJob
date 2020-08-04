@@ -1,9 +1,10 @@
 import React, { Suspense } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import StartPage from './components/views/StartPage';
-import Login from './components/views/Login';
-import Register from './components/views/Register';
-import Dashboard from './components/views/Dashboard';
+import StartPage from './pages/StartPage/StartPage';
+import Login from './components/views/Login/Login';
+import Register from './components/views/Register/Register';
+import Dashboard from './pages/Dashboard/Dashboard'
+
 
 function App() {
   return (

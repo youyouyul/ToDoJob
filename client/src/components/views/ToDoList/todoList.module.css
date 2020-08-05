@@ -1,0 +1,200 @@
+.todoContainer {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+input[type=checkbox], a, button {
+    cursor: pointer;
+}
+
+.todoBox {
+	background: #fff;
+    padding: 1rem;
+	margin: 1rem;
+	position: relative;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+    text-align: center;
+    height: 20rem;
+}
+
+.job {
+    grid-column: span 3 / span 3;
+}
+
+.header {
+    border-bottom: 1px solid #e6e6e6;
+}
+.header::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    width: 2rem;
+    height: 2rem;
+    z-index: 1;
+    opacity: 1;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.listBox {
+    overflow: scroll;
+    overscroll-behavior: contain;
+    height: 15rem;
+    background-color: whitesmoke;
+    margin: 1rem 1rem;
+    border-radius: 0.5rem;
+}
+
+.newTodo,
+.edit {
+	position: relative;
+	margin: 0.25rem 1rem 0.5rem 1rem;
+	width: 90%;
+	font-size: 1rem;
+    font-weight: bold;
+	font-family: inherit;
+	font-weight: inherit;
+	line-height: 1em;
+	border: 0;
+	color: inherit;
+    box-sizing: border-box;
+    height: 2.5rem;
+}
+
+.newTodo {
+    padding: 1rem;   
+    border-radius: 0.5rem;
+    border: none;
+    background: #efefef;
+    transition: background .3s ease;
+}
+
+.addBtn {
+    position: absolute;
+    display: inline-block;
+    margin-top: 0.9rem;
+    right: 2.5rem;
+    top: 1.25rem;
+    outline: 0;
+    border: 0;
+    transition: opacity .3s ease;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+.listBox {
+    position: relative;
+    z-index: 2;
+}
+
+.list {
+	margin: 13px 0;
+	padding: 0;
+    list-style: none;
+    text-align: start;
+}
+
+.list li {
+	position: relative;
+    font-size: 1rem;
+    color: rgb(92, 89, 89); 
+    border-radius: 10px;
+    transition: background .3s ease; 
+    padding: 1rem 0.5rem;
+}
+ .list li:hover {
+    background: #e6cece;
+}
+
+.editing {
+	border: 0.5rem;
+    padding: 0;
+    border-radius: 0.5rem;
+    background: rgb(223, 212, 212);
+}
+
+.editing .edit {
+	display: block;
+	width: calc(100% - 43px);
+	padding: 12px 16px;
+	margin: 0 0 0 43px;
+}
+
+.editing .view {
+	display: none;
+}
+
+input[type="checkbox"] {
+    content: '';
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    background: #fafafa;
+}
+    
+
+.toggle {
+	width: 40px;
+	/* auto, since non-WebKit browsers doesn't support input styling */
+	height: auto;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	margin: auto 0;
+	border: none; /* Mobile Safari */
+	-webkit-appearance: none;
+    appearance: none;
+    opacity: 0;
+}
+
+.label {
+	padding: 0 0.5rem;
+}
+
+.completedLabel {
+	text-decoration: line-through;
+}
+
+.destroy {
+    position: absolute;
+    display: inline-block;
+    right: 0;
+    top: 1rem;
+    outline: 0;
+    border: 0;
+    transition: opacity .3s ease;
+    background-repeat: no-repeat;
+    background-position: center;
+	display: none;
+    background-color: #e6cece;
+    opacity: 0.5;
+}
+
+.destroy:hover {
+	color: black;
+}
+
+.destroy:after {
+	content: '';
+    width: 1rem;
+    height: 1rem;
+    display: inline-block;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.list li:hover .destroy {
+	display: block;
+}
+
+.list li .edit {
+	display: none;
+}
+
+.todo-list li.completed label {
+	text-decoration: line-through;
+}

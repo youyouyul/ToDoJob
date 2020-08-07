@@ -23,7 +23,7 @@ function RecruitsSite() {
         // 잡코리아 자소설 사람인 인크루트 잡플래닛 
         //    +     +    +     +     +
         <div className={ recruitStyle.container }>
-            <div className={ [recruitStyle.body, fontStyle.recruitFont].join(' ') }>
+            <div className={ [recruitStyle.body, fontStyle.sunflower].join(' ') }>
                 <a href="http://jobkorea.co.kr"> 잡코리아 </a>
                 <a href="http://jasoseol.com"> 자소설닷컴 </a>
                 <a href="http://saramin.co.kr"> 사람인 </a>

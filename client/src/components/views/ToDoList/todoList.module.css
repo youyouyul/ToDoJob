@@ -87,7 +87,6 @@ input[type=checkbox], a, button {
   }
 
 .listBox {
-    position: relative;
     z-index: 2;
 }
 
@@ -178,7 +177,7 @@ input[type="checkbox"] {
 	color: black;
 }
 
-.destroy:after {
+.destroy::after {
 	content: '';
     width: 1rem;
     height: 1rem;

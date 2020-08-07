@@ -3,6 +3,7 @@ import Header from '../../components/layout/Header/Header';
 import Footer from '../../components/layout/Footer/Footer';
 import ToDoList from '../../components/views/ToDoList/ToDoList';
 import dashboartStyle from '../Dashboard/dashboard.module.css';
+import RecruitsSite from '../../components/views/RecruitsSite/RecruitsSite';
 
 function Dashboard() {
     return (
@@ -11,10 +12,10 @@ function Dashboard() {
             <div className={ dashboartStyle.boxContainer } >
                 {/* To Do */}
                 <ToDoList />
-
-
+                <div className={ dashboartStyle.gap }></div>
                 {/* 바로가기 */}
-
+                <RecruitsSite />
+                <div className={ dashboartStyle.gap }></div>
                 {/* 서류 */}
                 
                 {/* 시험 */}

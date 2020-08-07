@@ -1,6 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Bad+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bad+Script&family=Sunflower:wght@300&display=swap');
 
 .font {
     font-family: 'Bad Script', cursive;
     font-size: 1.4rem;
+}
+
+.recruitFont {
+    font-family: 'Sunflower', sans-serif;
 }

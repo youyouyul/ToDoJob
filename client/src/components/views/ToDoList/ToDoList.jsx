@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import listStyle from '../ToDoList/todoList.module.css';
+import { FaPlus, FaRegTimesCircle } from 'react-icons/fa';
 
 function ToDoList() {
     const presetValues = [{
@@ -14,6 +15,8 @@ function ToDoList() {
     }];
 
     const [mode, setMode] = useState('view');
+    const [todoJob, settodoJob] = useState([]);
+    const [todoToday, settodoToday] = useState([]);
 
     const onClickModeHandle = (e) => {
         setMode(mode === 'view' ? 'mode': 'view');
@@ -25,7 +28,7 @@ function ToDoList() {
                 <div className={ listStyle.view }>
                     <input type="checkbox" />
                     <label className={ listStyle.label} onClick={onClickModeHandle} >{ index.title }</label>
-                    <button className={ listStyle.destroy } onClick ><i className="fa fa-times"></i></button>
+                    <button className={ listStyle.destroy } onClick ><FaRegTimesCircle/></button>
                 </div> 
             :
                 <input className={ listStyle.edit } type="text" />
@@ -40,8 +43,8 @@ function ToDoList() {
                 <div className={ listStyle.header }>
                     <input className={ listStyle.newTodo } 
                            placeholder="To-Do for Job"/>
+                    <button className={ listStyle.addBtn }><FaPlus /></button>
                 </div>
-                <button className={ listStyle.addBtn }><i className="fa fa-plus"></i></button>
                 <div className={ listStyle.listBox }>
                     <ul className={ listStyle.list }>
                         { list }
@@ -54,8 +57,8 @@ function ToDoList() {
                 <div className={ listStyle.header }>
                     <input className={ listStyle.newTodo } 
                            placeholder="To-Do for Today"/>
+                    <button className={ listStyle.addBtn }><FaPlus /></button>
                 </div>
-                <button className={ listStyle.addBtn }><i className="fa fa-plus"></i></button>
                 <div className={ listStyle.listBox }>
                     
                 </div>

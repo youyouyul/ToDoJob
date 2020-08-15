@@ -1,39 +1,33 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
+import ToDo from './ToDo';
 import listStyle from '../ToDoList/todoList.module.css';
 import { FaPlus, FaRegTimesCircle } from 'react-icons/fa';
 
 function ToDoList() {
     const presetValues = [{
-        "title":"Wake up at 5am",
-        "completed":true
+        id: 1,
+        title : "Wake up at 5am",
+        completed : true
       }, {
-        "title":"Learn how to use Vue.js",
-        "completed":false
+        id: 2,
+        title : "Learn how to use React.js",
+        completed : false
       }, {
-        "title":"Drink coffee",
-        "completed":false
+        id: 3,
+        title : "Drink coffee",
+        completed : false
     }];
 
-    const [mode, setMode] = useState('view');
+    const [value, setValue] = useState('');
     const [todoJob, settodoJob] = useState([]);
     const [todoToday, settodoToday] = useState([]);
 
-    const onClickModeHandle = (e) => {
-        setMode(mode === 'view' ? 'mode': 'view');
-    }
+    const onChange = (e) => {
+        setValue(e.currentTarget.value);
+    };
 
-    const list = presetValues.map((index) =>
-        <li className={ mode === 'edit' ? listStyle.editing : null }>
-            { mode === 'view' ?
-                <div className={ listStyle.view }>
-                    <input type="checkbox" />
-                    <label className={ listStyle.label} onClick={onClickModeHandle} >{ index.title }</label>
-                    <button className={ listStyle.destroy } onClick ><FaRegTimesCircle/></button>
-                </div> 
-            :
-                <input className={ listStyle.edit } type="text" />
-            }
-        </li>
+    const list = presetValues.map( index =>
+        <ToDo todo={ index } key={ index.id } />
     );
 
     return (
@@ -42,8 +36,11 @@ function ToDoList() {
             <div className={ listStyle.todoBox }>
                 <div className={ listStyle.header }>
                     <input className={ listStyle.newTodo } 
-                           placeholder="To-Do for Job"/>
-                    <button className={ listStyle.addBtn }><FaPlus /></button>
+                           placeholder="To-Do for Job"
+                           value={ value } 
+                           onChange={ onChange }
+                    />
+                    <button className={ listStyle.addBtn } type="submit"><FaPlus /></button>
                 </div>
                 <div className={ listStyle.listBox }>
                     <ul className={ listStyle.list }>

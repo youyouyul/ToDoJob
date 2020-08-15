@@ -4,7 +4,7 @@
     gap: 1rem;
 }
 
-input[type=checkbox], a, button {
+button {
     cursor: pointer;
 }
 
@@ -19,11 +19,8 @@ input[type=checkbox], a, button {
     height: 20rem;
 }
 
-.job {
-    grid-column: span 3 / span 3;
-}
-
 .header {
+    display: flex;
     border-bottom: 1px solid #e6e6e6;
 }
 .header::before {
@@ -45,14 +42,14 @@ input[type=checkbox], a, button {
     overscroll-behavior: contain;
     height: 15rem;
     background-color: whitesmoke;
-    margin: 1rem 1rem;
+    margin: 1rem 0.5rem;
     border-radius: 0.5rem;
+    z-index: 2;
 }
 
-.newTodo,
-.edit {
+.newTodo {
 	position: relative;
-	margin: 0.25rem 1rem 0.5rem 1rem;
+	margin: 0.5rem;
 	width: 90%;
 	font-size: 1rem;
     font-weight: bold;
@@ -71,24 +68,20 @@ input[type=checkbox], a, button {
     border: none;
     background: #efefef;
     transition: background .3s ease;
+    flex: 1;
 }
 
 .addBtn {
-    position: absolute;
-    display: inline-block;
-    margin-top: 0.9rem;
-    right: 2.5rem;
-    top: 1.25rem;
-    outline: 0;
-    border: 0;
-    transition: opacity .3s ease;
-    background-repeat: no-repeat;
-    background-position: center;
+    background: none;
+    padding-right: 1rem;
+    font-size: 1rem;
+    display: flex;
+    outline: none;
+    border: none;
+    align-items: center;
+    /*transition: opacity .3s ease;*/
+    transition: 0.1s background ease-in;
   }
-
-.listBox {
-    z-index: 2;
-}
 
 .list {
 	margin: 13px 0;
@@ -98,6 +91,7 @@ input[type=checkbox], a, button {
 }
 
 .list li {
+    display: flex;
 	position: relative;
     font-size: 1rem;
     color: rgb(92, 89, 89); 
@@ -107,93 +101,31 @@ input[type=checkbox], a, button {
 }
  .list li:hover {
     background: #e6cece;
+}   
+
+.checkbox {
+    cursor: pointer;
+    flex: 1;
+    display: flex;
+    align-items: center;
 }
 
-.editing {
-	border: 0.5rem;
-    padding: 0;
-    border-radius: 0.5rem;
-    background: rgb(223, 212, 212);
+.checkbox svg {
+    font-size: 1.5rem;
 }
 
-.editing .edit {
-	display: block;
-	width: calc(100% - 43px);
-	padding: 12px 16px;
-	margin: 0 0 0 43px;
+.checkbox .label {
+    margin-left: 0.5rem;
+    flex: 1;
 }
 
-.editing .view {
-	display: none;
+.remove {
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    cursor: pointer;
 }
 
-input[type="checkbox"] {
-    content: '';
-    display: inline-block;
-    width: 1rem;
-    height: 1rem;
-    background: #fafafa;
-}
-    
-
-.toggle {
-	width: 40px;
-	/* auto, since non-WebKit browsers doesn't support input styling */
-	height: auto;
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	margin: auto 0;
-	border: none; /* Mobile Safari */
-	-webkit-appearance: none;
-    appearance: none;
-    opacity: 0;
-}
-
-.label {
-	padding: 0 0.5rem;
-}
-
-.completedLabel {
-	text-decoration: line-through;
-}
-
-.destroy {
-    position: absolute;
-    display: inline-block;
-    right: 0;
-    top: 1rem;
-    outline: 0;
-    border: 0;
-    transition: opacity .3s ease;
-    background-repeat: no-repeat;
-    background-position: center;
-	display: none;
-    background-color: #e6cece;
-    opacity: 0.5;
-}
-
-.destroy:hover {
-	color: black;
-}
-
-.destroy::after {
-	content: '';
-    width: 1rem;
-    height: 1rem;
-    display: inline-block;
-	background-repeat: no-repeat;
-	background-position: center;
-}
-
-.list li:hover .destroy {
-	display: block;
-}
-
-.list li .edit {
-	display: none;
-}
-
-.todo-list li.completed label {
-	text-decoration: line-through;
+.remove:hover {
+	color: red;
 }

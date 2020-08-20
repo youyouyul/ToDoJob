@@ -46,13 +46,13 @@ function Login(props) {
             <div className={ loginStyle.formBox }>
                 <form className={ loginStyle.form } onSubmit={ onSubmitHandler }>
                     <div className={ loginStyle.inputBox }>
-                        <label className={ loginStyle.label }>
+                        <label className={ loginStyle.logText }>
                             Username
                         </label>
                         <input className={ loginStyle.input } type="email" value={ email } onChange={ onEmailHandler }/>
                     </div>
                     <div className={ loginStyle.loginPw }>
-                        <label className={ loginStyle.label }>
+                        <label className={ loginStyle.logText }>
                             Password
                         </label>
                         <input className={ loginStyle.input } type="password" value={ password } onChange={ onPWHandler }/>

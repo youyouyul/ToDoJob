@@ -1,8 +1,56 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { registerUser } from '../../../_actions/user_action';
 import regStyle from '../Login/login.module.css';
 import fontStyle from '../../../assets/css/fonts.module.css';
 
-function Register() {
+function Register(props) {
+    const dispatch = useDispatch();
+
+    const [email, setEmail] = useState('');
+    const [name, setName] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPw, setConfirmPw] = useState('');
+
+    const onChangeEmail = e => {
+        setEmail(e.target.value);
+    }
+
+    const onChangeName = e => {
+        setName(e.target.value);
+    }
+
+    const onChangePassword = e => {
+        setPassword(e.target.value);
+    }
+
+    const onChangeConfirmPw = e => {
+        setConfirmPw(e.target.value);
+    }
+
+    const onSubmit = e => {
+        e.preventDefault();
+
+        if(password !== confirmPw) {
+            return alert('비밀번호와 비밀번호 확인이 다릅니다.');
+        }
+
+        let body = {
+            email: email,
+            name: name,
+            password: password
+        }
+
+        dispatch(registerUser(body))
+            .then(response => {
+                if(response.payload.success) {
+                    props.history.push('/login');
+                } else {
+                    alert('회원가입 실패하였습니다.');
+                }
+            });
+    }
+
     return (
     <div className={ regStyle.box }>
         <div className={ fontStyle.font } style={{ fontSize: '4rem'}}>
@@ -11,33 +59,33 @@ function Register() {
         <br />
         <div className={ regStyle.body }>
             <div className={ regStyle.formBox }>
-                <form className={ regStyle.form }>
+                <form className={ regStyle.form } onSubmit={ onSubmit }>
                     <div className={ regStyle.inputBox }>
-                        <label className={ regStyle.label }style={{float: 'left'}}>
+                        <label>
                             Username
                         </label>
-                        <input className={ regStyle.input } type="text" />
+                        <input className={ regStyle.input } type="text" value={name} onChange={ onChangeName }/>
                     </div>
                     <div className={ regStyle.inputBox }>
-                        <label className={ regStyle.label } style={{float: 'left'}}>
+                        <label>
                             Email
                         </label>
-                        <input className={ regStyle.input } type="email" />
+                        <input className={ regStyle.input } type="email" value={email} onChange={ onChangeEmail }/>
                     </div>
                     <div className={ regStyle.inputBox }>
-                        <label className={ regStyle.label } style={{float: 'left'}}>
+                        <label>
                             Password
                         </label>
-                        <input className={ regStyle.input } type="password" />
+                        <input className={ regStyle.input } type="password" value={password} onChange={ onChangePassword }/>
                     </div>
                     <div className={ regStyle.inputBox }>
-                        <label className={ regStyle.label } style={{float: 'left'}}>
+                        <label>
                             Password Check
                         </label>
-                        <input className={ regStyle.input } type="password" />
+                        <input className={ regStyle.input } type="password" value={confirmPw} onChange={ onChangeConfirmPw } />
                     </div>
                     <div className={ regStyle.signUp }>
-                        <button className={ regStyle.btn } type="button">
+                        <button className={ regStyle.btn } >
                             Sign Up
                         </button>
                     </div>

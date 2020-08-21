@@ -2,8 +2,8 @@ import React from 'react'
 import listStyle from '../ToDoList/todoList.module.css';
 import { MdCheckBox, MdCheckBoxOutlineBlank, MdRemoveCircleOutline } from 'react-icons/md';
 
-const ToDo = ({ todo }) => {
-    const { title, completed } = todo;
+const ToDo = ({ todo, onToggle, userName }) => {
+    const { _id, context, checkFlag } = todo;
 
     const lineStyle = {
         textDecoration: 'line-through'
@@ -11,9 +11,9 @@ const ToDo = ({ todo }) => {
 
     return (
         <li>   
-            <div className={ listStyle.checkbox } >
-                { completed ? <MdCheckBox /> : <MdCheckBoxOutlineBlank /> }
-                <div className={ listStyle.label } style={ completed ? lineStyle : null}>{ title }</div>
+            <div className={ listStyle.checkbox } onClick={ () => onToggle(_id) }>
+                { checkFlag ? <MdCheckBox /> : <MdCheckBoxOutlineBlank /> }
+                <div className={ listStyle.label } style={ checkFlag ? lineStyle : null}>{ context }</div>
             </div>
             <div className={ listStyle.remove }>
                 <MdRemoveCircleOutline />

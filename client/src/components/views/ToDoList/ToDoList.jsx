@@ -1,33 +1,95 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useEffect } from 'react'
 import ToDo from './ToDo';
 import listStyle from '../ToDoList/todoList.module.css';
-import { FaPlus, FaRegTimesCircle } from 'react-icons/fa';
+import { FaPlus } from 'react-icons/fa';
+import Axios from 'axios';
 
 function ToDoList() {
-    const presetValues = [{
-        id: 1,
-        title : "Wake up at 5am",
-        completed : true
-      }, {
-        id: 2,
-        title : "Learn how to use React.js",
-        completed : false
-      }, {
-        id: 3,
-        title : "Drink coffee",
-        completed : false
-    }];
+    const userName = 'yuri';
 
-    const [value, setValue] = useState('');
-    const [todoJob, settodoJob] = useState([]);
-    const [todoToday, settodoToday] = useState([]);
+    const [jobVal, setJobVal] = useState('');
+    const [todayVal, setTodayVal] = useState('');
+    const [todoAll, setTodoAll] = useState([]);
+    const [todoJob, setTodoJob] = useState([]);
+    const [todoToday, setTodoToday] = useState([]);
 
-    const onChange = (e) => {
-        setValue(e.currentTarget.value);
+    useEffect(() => {
+        Axios.get('/api/todos/getTodoList')
+            .then(response => {
+                if(response.data.success) {
+                    let todoList = response.data.todoList;
+
+                    setTodoAll(todoList);
+                    setTodoJob(todoList.filter(index => index.todoType === "JOB"));
+                    setTodoToday(todoList.filter(index => index.todoType === "TODAY"));
+                } else {
+                    console.log("todolist 가져오기 실패");
+                }
+            })
+    }, []);
+
+    const onChangeJobVal = (e) => {
+        setJobVal(e.target.value);
     };
 
-    const list = presetValues.map( index =>
-        <ToDo todo={ index } key={ index.id } />
+    const onChangeTodayVal = e => {
+        setTodayVal(e.target.value);
+    }
+
+    const onClickJob = e => {
+        e.preventDefault();
+
+        let body = {
+            userName: userName,
+            context: jobVal,
+            todoType: 'JOB',
+            checkFlag: false
+        }
+
+        Axios.post('/api/todos/insert', body)
+            .then(response => {
+                if(response.data.success) {
+                    console.log('upload');
+                } else {
+                    alert("업로드에 실패했습니다.");
+                }
+            });
+    }
+
+    const onclickToday = e => {
+        e.preventDefault();
+
+        let body = {
+            userName: userName,
+            context: todayVal,
+            todoType: 'TODAY',
+            checkFlag: false
+        }
+
+        Axios.post('/api/todos/insert', body)
+            .then(response => {
+                if(response.data.success) {
+                    console.log('upload');
+                } else {
+                    alert("업로드에 실패했습니다.");
+                }
+            });
+    }
+
+    const onToggle = useCallback(
+        id => {
+          setTodoAll(todoAll.map(todo =>
+            todo._id === id ? { ...todo, checkFlag: !todo.checkFlag } : todo ))  
+        },
+        [todoAll],
+    );
+
+    const jobList = todoJob.map( index =>
+        <ToDo todo={ index } key={ index._id } onToggle={ onToggle } userName = { userName }/>
+    );
+
+    const todayList = todoToday.map( index =>
+        <ToDo todo={ index } key={ index._id } onToggle={ onToggle }/>
     );
 
     return (
@@ -37,14 +99,14 @@ function ToDoList() {
                 <div className={ listStyle.header }>
                     <input className={ listStyle.newTodo } 
                            placeholder="To-Do for Job"
-                           value={ value } 
-                           onChange={ onChange }
+                           value={ jobVal } 
+                           onChange={ onChangeJobVal }
                     />
-                    <button className={ listStyle.addBtn } type="submit"><FaPlus /></button>
+                    <button className={ listStyle.addBtn } type="button" onClick={ onClickJob }><FaPlus /></button>
                 </div>
                 <div className={ listStyle.listBox }>
                     <ul className={ listStyle.list }>
-                        { list }
+                        { jobList }
                     </ul>
                 </div>
             </div>
@@ -53,11 +115,16 @@ function ToDoList() {
             <div className={ listStyle.todoBox }>
                 <div className={ listStyle.header }>
                     <input className={ listStyle.newTodo } 
-                           placeholder="To-Do for Today"/>
-                    <button className={ listStyle.addBtn }><FaPlus /></button>
+                           placeholder="To-Do for Today"
+                           value={ todayVal}
+                           onChange={ onChangeTodayVal }
+                    />
+                    <button className={ listStyle.addBtn } type="button" onClick={ onclickToday }><FaPlus /></button>
                 </div>
                 <div className={ listStyle.listBox }>
-                    
+                <ul className={ listStyle.list }>
+                        { todayList }
+                    </ul>
                 </div>
             </div>
         </div>
@@ -65,3 +132,16 @@ function ToDoList() {
 }
 
 export default ToDoList
+
+
+
+/*
+user 정보 받아와서 해당 user의 todolist 목록 가져온다
+=> todayList, jobList
+
+기능)
+1. 체크
+2. 등록
+3. 제거
+
+*/

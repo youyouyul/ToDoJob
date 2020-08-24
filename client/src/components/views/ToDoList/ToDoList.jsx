@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import ToDo from './ToDo';
 import listStyle from '../ToDoList/todoList.module.css';
 import { FaPlus } from 'react-icons/fa';
@@ -10,23 +10,20 @@ function ToDoList() {
     const [jobVal, setJobVal] = useState('');
     const [todayVal, setTodayVal] = useState('');
     const [todoAll, setTodoAll] = useState([]);
-    const [todoJob, setTodoJob] = useState([]);
-    const [todoToday, setTodoToday] = useState([]);
 
     useEffect(() => {
-        Axios.get('/api/todos/getTodoList')
+        let body = {
+            userName: userName
+        }
+        Axios.get('/api/todos/getTodoList', body)
             .then(response => {
                 if(response.data.success) {
-                    let todoList = response.data.todoList;
-
-                    setTodoAll(todoList);
-                    setTodoJob(todoList.filter(index => index.todoType === "JOB"));
-                    setTodoToday(todoList.filter(index => index.todoType === "TODAY"));
+                    setTodoAll(response.data.todoList);
                 } else {
                     console.log("todolist 가져오기 실패");
                 }
             })
-    }, []);
+    }, [todoAll]);
 
     const onChangeJobVal = (e) => {
         setJobVal(e.target.value);
@@ -48,12 +45,12 @@ function ToDoList() {
 
         Axios.post('/api/todos/insert', body)
             .then(response => {
-                if(response.data.success) {
-                    console.log('upload');
-                } else {
+                if(!response.data.success) {
                     alert("업로드에 실패했습니다.");
                 }
             });
+
+        setJobVal("");
     }
 
     const onclickToday = e => {
@@ -68,28 +65,47 @@ function ToDoList() {
 
         Axios.post('/api/todos/insert', body)
             .then(response => {
-                if(response.data.success) {
-                    console.log('upload');
-                } else {
+                if(!response.data.success) {
                     alert("업로드에 실패했습니다.");
+                }
+            });
+
+        setTodayVal("");
+    }
+
+    const onToggle = ( id, checkFlag ) => {
+        let body = {
+            _id: id,
+            checkFlag: checkFlag
+        }
+
+        Axios.post('/api/todos/update', body)
+            .then(response => {
+                if(!response.data.success) {
+                    console.log(response.data.err);
                 }
             });
     }
 
-    const onToggle = useCallback(
-        id => {
-          setTodoAll(todoAll.map(todo =>
-            todo._id === id ? { ...todo, checkFlag: !todo.checkFlag } : todo ))  
-        },
-        [todoAll],
+    const onRemove = id => {
+        let body = {
+            _id: id
+        }
+
+        Axios.post('/api/todos/delete', body)
+            .then(response => {
+                if(!response.data.success) {
+                    console.log(response.data.err);
+                }
+            });
+    }
+
+    const jobList = todoAll.filter(todo => todo.todoType === "JOB").map( index =>
+        <ToDo todo={ index } key={ index._id } onToggle={ onToggle } onRemove={ onRemove }/>
     );
 
-    const jobList = todoJob.map( index =>
-        <ToDo todo={ index } key={ index._id } onToggle={ onToggle } userName = { userName }/>
-    );
-
-    const todayList = todoToday.map( index =>
-        <ToDo todo={ index } key={ index._id } onToggle={ onToggle }/>
+    const todayList = todoAll.filter(todo => todo.todoType === "TODAY").map( index =>
+        <ToDo todo={ index } key={ index._id } onToggle={ onToggle } onRemove={ onRemove }/>
     );
 
     return (
@@ -132,16 +148,3 @@ function ToDoList() {
 }
 
 export default ToDoList
-
-
-
-/*
-user 정보 받아와서 해당 user의 todolist 목록 가져온다
-=> todayList, jobList
-
-기능)
-1. 체크
-2. 등록
-3. 제거
-
-*/

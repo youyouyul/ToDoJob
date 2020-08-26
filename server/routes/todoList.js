@@ -18,8 +18,8 @@ router.post('/insert', (req, res) => {
 });
 
 // ToDo 리스트 조회
-router.get('/getTodoList', (req, res) => {
-    ToDoList.find({ userName: req.body.userName }).exec((err, todoList) => {
+router.post('/getTodoList', (req, res) => {
+    ToDoList.find({ "userName" : req.body.userName }, (err, todoList) => {
         if(err) 
             return res.status(400).send(err);
 

@@ -4,8 +4,8 @@ import listStyle from '../ToDoList/todoList.module.css';
 import { FaPlus } from 'react-icons/fa';
 import Axios from 'axios';
 
-function ToDoList() {
-    const userName = 'yuri';
+function ToDoList({ userName }) {
+    console.log(userName);
 
     const [jobVal, setJobVal] = useState('');
     const [todayVal, setTodayVal] = useState('');
@@ -15,15 +15,19 @@ function ToDoList() {
         let body = {
             userName: userName
         }
-        Axios.get('/api/todos/getTodoList', body)
+
+        Axios.post('/api/todos/getTodoList', body)
             .then(response => {
                 if(response.data.success) {
-                    setTodoAll(response.data.todoList);
+                    let list = response.data.todoList;
+
+                    setTodoAll(list);
+                    console.log(todoAll)
                 } else {
                     console.log("todolist 가져오기 실패");
                 }
-            })
-    }, [todoAll]);
+            });
+    }, []);
 
     const onChangeJobVal = (e) => {
         setJobVal(e.target.value);
@@ -47,6 +51,8 @@ function ToDoList() {
             .then(response => {
                 if(!response.data.success) {
                     alert("업로드에 실패했습니다.");
+                } else {
+                    setTodoAll(todoAll.concat(response.data.todo));
                 }
             });
 
@@ -67,6 +73,8 @@ function ToDoList() {
             .then(response => {
                 if(!response.data.success) {
                     alert("업로드에 실패했습니다.");
+                } else {
+                    setTodoAll(todoAll.concat(response.data.todo));
                 }
             });
 
@@ -83,9 +91,11 @@ function ToDoList() {
             .then(response => {
                 if(!response.data.success) {
                     console.log(response.data.err);
+                } else {
+                    setTodoAll(todoAll.map(todo => todo._id === id ? { ...todo, checkFlag: !todo.checkFlag } : todo));
                 }
             });
-    }
+    };
 
     const onRemove = id => {
         let body = {
@@ -96,17 +106,24 @@ function ToDoList() {
             .then(response => {
                 if(!response.data.success) {
                     console.log(response.data.err);
-                }
+                } else {
+                    let index = todoAll.findIndex(function(item) { return item._id === response.data.todoList._id });
+                    let list = (todoAll.splice(index, 1));
+                    
+                    setTodoAll(list);
+                    setTodoAll(todoAll);
+                }   
             });
     }
 
-    const jobList = todoAll.filter(todo => todo.todoType === "JOB").map( index =>
+    const job = todoAll.filter(todo => todo.todoType === "JOB").map( index =>
         <ToDo todo={ index } key={ index._id } onToggle={ onToggle } onRemove={ onRemove }/>
     );
 
-    const todayList = todoAll.filter(todo => todo.todoType === "TODAY").map( index =>
+    const today = todoAll.filter(todo => todo.todoType === "TODAY").map( index =>
         <ToDo todo={ index } key={ index._id } onToggle={ onToggle } onRemove={ onRemove }/>
     );
+
 
     return (
         <div className={ listStyle.todoContainer }>
@@ -122,7 +139,7 @@ function ToDoList() {
                 </div>
                 <div className={ listStyle.listBox }>
                     <ul className={ listStyle.list }>
-                        { jobList }
+                        { job }
                     </ul>
                 </div>
             </div>
@@ -139,7 +156,7 @@ function ToDoList() {
                 </div>
                 <div className={ listStyle.listBox }>
                 <ul className={ listStyle.list }>
-                        { todayList }
+                        { today }
                     </ul>
                 </div>
             </div>

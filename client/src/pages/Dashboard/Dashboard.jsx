@@ -8,14 +8,15 @@ import Application from '../../components/views/Application/Application';
 import dashboartStyle from '../Dashboard/dashboard.module.css';
 import fontStyle from '../../assets/css/fonts.module.css';
 
-function Dashboard() {
+function Dashboard({ match }) {
+    const userName = match.params.userName;
 
     return (
         <div>
             <Header />
             <div className={ dashboartStyle.boxContainer } >
                 {/* To Do */}
-                <ToDoList />
+                <ToDoList userName={ userName }/>
                 <div className={ dashboartStyle.gap }></div>
                 {/* 바로가기 */}
                 <div className={ fontStyle.sunflower }>>> 바로가기</div>

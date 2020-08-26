@@ -29,7 +29,7 @@ function Login(props) {
         dispatch(loginUser(body))
             .then(response => {
                 if(response.payload.loginSuccess) {
-                    props.history.push('/dashboard');
+                    props.history.push('/' + response.payload.name);
                 } else {
                     alert('Login Error');
                 }

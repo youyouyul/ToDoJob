@@ -20,3 +20,24 @@
     padding-top: 1rem;
     padding-bottom: 1rem;
 }
+
+.companyName {
+    font-size: 2rem;
+    margin: 0;
+    color: slategray;
+}
+
+.date {
+    margin: 1rem 0 1rem 0;
+    font-size: 0.8rem;
+}
+
+.duration {
+    font-size: 1rem;
+    color: #e500ff;
+}
+
+.position {
+    margin: 2rem 0 2rem 0;
+    color: grey;
+}

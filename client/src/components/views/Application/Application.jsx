@@ -1,49 +1,39 @@
 import React from 'react';
 import applyStyle from '../Application/application.module.css';
+import Card from './Card';
+
 
 function Application () {
     const cards = [
         {
-            company: '삼성',
-            start: '01-01',
-            end: '02-01'
+            _id: 1,
+            companyName: '네이버',
+            startDate: '2020-09-01',
+            endDate: '2020-09-30',
+            companyUrl: 'http://naver.com',
+            jobPosition: 'FrontEnd Web Service',
+            state: '작성 중'
         },
         {
-            company: '현대',
-            start: '01-03',
-            end: '02-03'
+            _id: 2,
+            companyName: '라인',
+            startDate: '2020-08-24',
+            endDate: '2020-09-01',
+            companyUrl: 'http://google.com',
+            jobPosition: 'Web Flatform Service FrontEnd',
+            state: '지원 완료'
         }
     ];
+
+    const onClick = (id) => {
+        console.log(id);
+    }
+
     return (
         <div className={ applyStyle.container }>
-                <div className={ applyStyle.cards }>
-                    <div className={ applyStyle.cardInfo }>
-                        <p>
-                            Lorem ipsum dolor sit amet
-                        </p>
-                    </div>
-                </div>
-                <div className={ applyStyle.cards }>
-                    <div className={ applyStyle.cardInfo }>
-                        <p>
-                            Lorem ipsum dolor sit amet, 
-                        </p>
-                    </div>
-                </div>
-                <div className={ applyStyle.cards }>
-                    <div className={ applyStyle.cardInfo }>
-                        <p>
-                            Lorem ipsum dolor sit amet, 
-                        </p>
-                    </div>
-                </div>
-                <div className={ applyStyle.cards }>
-                    <div className={ applyStyle.cardInfo }>
-                        <p>
-                            Lorem ipsum dolor sit amet, 
-                        </p>
-                    </div>
-                </div>
+            { cards.map(card => (
+                <Card card={card} key={card._id} onClick={onClick}/>
+            ))}
         </div>
     )
 }

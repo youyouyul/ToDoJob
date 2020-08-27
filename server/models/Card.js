@@ -25,7 +25,10 @@ const cardSchema = mongoose.Schema({
         type: String,
         maxLength: 100
     },
-    state: {
+    infoState: {
+        type: String
+    },
+    cardState: {
         type: String
     }
 });

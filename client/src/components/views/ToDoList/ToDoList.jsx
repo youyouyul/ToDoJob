@@ -88,7 +88,7 @@ function ToDoList({ userName }) {
                 if(!response.data.success) {
                     console.log(response.data.err);
                 } else {
-                    setTodoAll(todoAll.map(todo => todo._id === id ? { ...todo, checkFlag: !todo.checkFlag } : todo));
+                    //setTodoAll(todoAll.map(todo => todo._id === id ? { ...todo, checkFlag: !todo.checkFlag } : todo));
                 }
             });
     }, [todoAll]);
@@ -113,7 +113,6 @@ function ToDoList({ userName }) {
     }, [todoAll]);
 
     const getToDo = useCallback(type => {
-        console.log('getTodo')
          return todoAll.filter(todo => todo.todoType === type).map( index =>
             <ToDo todo={ index } key={ index._id } onToggle={ onToggle } onRemove={ onRemove }/>
         );

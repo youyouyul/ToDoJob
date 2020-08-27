@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback, useMemo } from 'react'
 import ToDo from './ToDo';
 import listStyle from '../ToDoList/todoList.module.css';
 import { FaPlus } from 'react-icons/fa';
 import Axios from 'axios';
 
 function ToDoList({ userName }) {
-    console.log(userName);
 
     const [jobVal, setJobVal] = useState('');
     const [todayVal, setTodayVal] = useState('');
@@ -19,25 +18,22 @@ function ToDoList({ userName }) {
         Axios.post('/api/todos/getTodoList', body)
             .then(response => {
                 if(response.data.success) {
-                    let list = response.data.todoList;
-
-                    setTodoAll(list);
-                    console.log(todoAll)
+                    setTodoAll(response.data.todoList);
                 } else {
                     console.log("todolist 가져오기 실패");
                 }
             });
+    }, [userName]);
+
+    const onChangeJobVal = useCallback( e => {
+        setJobVal(e.target.value);
     }, []);
 
-    const onChangeJobVal = (e) => {
-        setJobVal(e.target.value);
-    };
-
-    const onChangeTodayVal = e => {
+    const onChangeTodayVal = useCallback( e => {
         setTodayVal(e.target.value);
-    }
+    }, []);
 
-    const onClickJob = e => {
+    const onClickJob = useCallback( e => {
         e.preventDefault();
 
         let body = {
@@ -57,9 +53,9 @@ function ToDoList({ userName }) {
             });
 
         setJobVal("");
-    }
+    }, [userName, jobVal, todoAll]);
 
-    const onclickToday = e => {
+    const onclickToday = useCallback( e => {
         e.preventDefault();
 
         let body = {
@@ -79,9 +75,9 @@ function ToDoList({ userName }) {
             });
 
         setTodayVal("");
-    }
+    }, [userName, todayVal, todoAll]);
 
-    const onToggle = ( id, checkFlag ) => {
+    const onToggle = useCallback(( id, checkFlag ) => {
         let body = {
             _id: id,
             checkFlag: checkFlag
@@ -95,9 +91,9 @@ function ToDoList({ userName }) {
                     setTodoAll(todoAll.map(todo => todo._id === id ? { ...todo, checkFlag: !todo.checkFlag } : todo));
                 }
             });
-    };
+    }, [todoAll]);
 
-    const onRemove = id => {
+    const onRemove = useCallback( id => {
         let body = {
             _id: id
         }
@@ -114,16 +110,17 @@ function ToDoList({ userName }) {
                     setTodoAll(todoAll);
                 }   
             });
-    }
+    }, [todoAll]);
 
-    const job = todoAll.filter(todo => todo.todoType === "JOB").map( index =>
-        <ToDo todo={ index } key={ index._id } onToggle={ onToggle } onRemove={ onRemove }/>
-    );
+    const getToDo = useCallback(type => {
+        console.log('getTodo')
+         return todoAll.filter(todo => todo.todoType === type).map( index =>
+            <ToDo todo={ index } key={ index._id } onToggle={ onToggle } onRemove={ onRemove }/>
+        );
+    }, [todoAll]);
 
-    const today = todoAll.filter(todo => todo.todoType === "TODAY").map( index =>
-        <ToDo todo={ index } key={ index._id } onToggle={ onToggle } onRemove={ onRemove }/>
-    );
-
+    const job = useMemo(() => getToDo("JOB"), [todoAll]);
+    const today = useMemo(() => getToDo("TODAY"), [todoAll]);
 
     return (
         <div className={ listStyle.todoContainer }>

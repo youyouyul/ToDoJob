@@ -8,20 +8,22 @@ function Application () {
         {
             _id: 1,
             companyName: '네이버',
-            startDate: '2020-09-01',
-            endDate: '2020-09-30',
+            startDate: '2020-08-01',
+            endDate: '2020-08-10',
+            infoDate: '2020-09-11',
             companyUrl: 'http://naver.com',
             jobPosition: 'FrontEnd Web Service',
-            state: '작성 중'
+            cardState: '작성 중'
         },
         {
             _id: 2,
             companyName: '라인',
             startDate: '2020-08-24',
-            endDate: '2020-09-01',
+            endDate: '2020-08-25',
+            infoDate: '',
             companyUrl: 'http://google.com',
-            jobPosition: 'Web Flatform Service FrontEnd',
-            state: '지원 완료'
+            jobPosition: 'Web Platform Service FrontEnd',
+            cardState: '지원 완료'
         }
     ];
 

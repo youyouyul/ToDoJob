@@ -88,7 +88,7 @@ function ToDoList({ userName }) {
                 if(!response.data.success) {
                     console.log(response.data.err);
                 } else {
-                    //setTodoAll(todoAll.map(todo => todo._id === id ? { ...todo, checkFlag: !todo.checkFlag } : todo));
+                    setTodoAll(todoAll.map(todo => todo._id === id ? { ...todo, checkFlag: !todo.checkFlag } : todo));
                 }
             });
     }, [todoAll]);

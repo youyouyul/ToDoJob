@@ -12,16 +12,6 @@ function Application () {
 
     const cards = [
         {
-            _id: 2,
-            companyName: '해피회사',
-            startDate: '2020-09-01',
-            endDate: '2020-09-10',
-            infoDate: '2020-09-11',
-            companyUrl: 'http://naver.com',
-            jobPosition: 'FrontEnd Web Service',
-            cardState: '작성 중'
-        },
-        {
             _id: 1,
             companyName: '스마일회사',
             startDate: '2020-08-24',
@@ -29,6 +19,16 @@ function Application () {
             infoDate: '2020-09-11',
             companyUrl: 'http://google.com',
             jobPosition: 'Web Platform Service FrontEnd',
+            cardState: '작성 중'
+        },
+        {
+            _id: 2,
+            companyName: '해피회사',
+            startDate: '2020-09-01',
+            endDate: '2020-09-10',
+            infoDate: '2020-09-11',
+            companyUrl: 'http://naver.com',
+            jobPosition: 'FrontEnd Web Service',
             cardState: '작성 중'
         },
         {

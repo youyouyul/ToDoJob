@@ -7,12 +7,12 @@ function Application () {
 
     // Dashboard에서 받은 Card State에 따라 변경
     const bgStyle = {
-        backgroundColor: '#ece9ff'
+        backgroundColor: 'rgb(235 251 251)'
     }
 
     const cards = [
         {
-            _id: 1,
+            _id: 2,
             companyName: '해피회사',
             startDate: '2020-09-01',
             endDate: '2020-09-10',
@@ -22,7 +22,7 @@ function Application () {
             cardState: '작성 중'
         },
         {
-            _id: 2,
+            _id: 1,
             companyName: '스마일회사',
             startDate: '2020-08-24',
             endDate: '2020-09-02',

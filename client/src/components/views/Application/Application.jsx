@@ -7,7 +7,7 @@ function Application () {
 
     // Dashboard에서 받은 Card State에 따라 변경
     const bgStyle = {
-        backgroundColor: 'rgb(235 251 251)'
+        backgroundColor: 'rgb(245 245 245)'
     }
 
     const cards = [

@@ -23,7 +23,7 @@ const Card = ({card, onClick, style}) => {
 
     const quotesStyle = {
         marginBottom: '1rem',
-        color: '#5b84f9'
+        color: 'rgb(189 186 186)'
     }
  
     return (

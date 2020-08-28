@@ -49,9 +49,9 @@
 
 .cardState {
     display: flex;
-    color: #ff00af;
     border-radius: 1rem;
     justify-content: center;
-    background-color: #f7d2d2;
+    color: #13798a;
+    background-color: #d4d4d4;
 }
 

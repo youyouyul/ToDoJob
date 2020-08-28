@@ -22,22 +22,36 @@
 }
 
 .companyName {
+    justify-content: center;
+}
+
+.companyName span{
     font-size: 2rem;
-    margin: 0;
+    margin: 0 0.5rem 0 0.5rem;
     color: slategray;
 }
 
 .date {
     margin: 1rem 0 1rem 0;
     font-size: 0.8rem;
+    color: #4e4b50;
 }
 
 .duration {
-    font-size: 1rem;
-    color: #e500ff;
+    font-size: 1.5rem;
+    color: #ff0d00;
 }
 
 .position {
-    margin: 2rem 0 2rem 0;
+    margin: 1.5rem 0 1.5rem 0;
     color: grey;
 }
+
+.cardState {
+    display: flex;
+    color: #ff00af;
+    border-radius: 1rem;
+    justify-content: center;
+    background-color: #f7d2d2;
+}
+

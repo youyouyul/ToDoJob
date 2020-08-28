@@ -4,6 +4,12 @@ import Card from './Card';
 
 
 function Application () {
+
+    // Dashboard에서 받은 Card State에 따라 변경
+    const bgStyle = {
+        backgroundColor: '#ece9ff'
+    }
+
     const cards = [
         {
             _id: 1,
@@ -34,7 +40,7 @@ function Application () {
     return (
         <div className={ applyStyle.container }>
             { cards.map(card => (
-                <Card card={card} key={card._id} onClick={onClick}/>
+                <Card card={card} key={card._id} onClick={onClick} style={bgStyle}/>
             ))}
         </div>
     )

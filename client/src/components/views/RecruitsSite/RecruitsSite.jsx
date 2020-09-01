@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import recruitStyle from '../RecruitsSite/recruitsSite.module.css';
 import fontStyle from '../../../assets/css/fonts.module.css';
 //import Modal from 'react-modal';

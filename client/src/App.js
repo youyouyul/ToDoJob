@@ -4,6 +4,7 @@ import StartPage from './pages/StartPage/StartPage';
 import Login from './components/views/Login/Login';
 import Register from './components/views/Register/Register';
 import Dashboard from './pages/Dashboard/Dashboard'
+import ResumePage from './pages/ResumePage/ResumePage';
 
 
 function App() {
@@ -14,7 +15,8 @@ function App() {
           <Route exact path="/" component={StartPage} />
           <Route exact path="/login" component={Login} />  
           <Route exact path="/register" component={Register} />
-          <Route exact path="/:userName" component={Dashboard} />    
+            <Route exact path="/:userName" component={Dashboard} />    
+            <Route exact path="/:userName/:companyId" component={ResumePage} />
         </Switch>
       </div>
     </Suspense>

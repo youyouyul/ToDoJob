@@ -3,7 +3,7 @@ import applyStyle from '../Application/application.module.css';
 import Card from './Card';
 
 
-function Application () {
+function Application ({userName, history}) {
 
     // Dashboard에서 받은 Card State에 따라 변경
     const bgStyle = {
@@ -53,14 +53,14 @@ function Application () {
         }
     ];
 
-    const onClick = (id) => {
-        console.log(id);
+    const onClickResume = (id) => {
+        history.push('/' + userName + '/'+ id);
     }
 
     return (
         <div className={ applyStyle.container }>
             { cards.map(card => (
-                <Card card={card} key={card._id} onClick={onClick} style={bgStyle}/>
+                <Card card={card} key={card._id} onClickResume={onClickResume} style={bgStyle}/>
             ))}
         </div>
     )

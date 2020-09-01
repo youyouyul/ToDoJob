@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bad+Script&family=Sunflower:wght@300&display=swap&family=Jua&display=swap&family=Hi+Melody&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bad+Script&family=Sunflower:wght@300&display=swap&family=Jua&display=swap&family=Hi+Melody&display=swap&family=Do+Hyeon&display=swap');
 
 .font {
     font-family: 'Bad Script', cursive;
@@ -15,4 +15,8 @@
 
 .hiMelody {
     font-family: 'Hi Melody', cursive;
+}
+
+.doHyeon {
+    font-family: 'Do Hyeon', sans-serif;
 }

@@ -4,7 +4,7 @@ import fontStyle from '../../../assets/css/fonts.module.css';
 import { FaCalendarCheck, FaRegUser} from 'react-icons/fa';
 import { ImQuotesLeft, ImQuotesRight } from 'react-icons/im';
 
-const Card = ({card, onClick, style}) => {
+const Card = ({card, onClickResume, style}) => {
 
     const now = new Date();
     const end = new Date(card.endDate);
@@ -27,12 +27,12 @@ const Card = ({card, onClick, style}) => {
     }
  
     return (
-        <div className={ applyStyle.cards } onClick={() => onClick(card._id)} style={ style }>
+        <div className={ applyStyle.cards } style={ style }>
             <div className={ applyStyle.cardInfo }>
                 <div className={ `${applyStyle.companyName} ${fontStyle.jua}` }>
                     <ImQuotesLeft style={quotesStyle}/>
                     <span>
-                         {card.companyName} 
+                         <a href={card.companyUrl}>{card.companyName}</a>
                     </span>
                     <ImQuotesRight style={quotesStyle}/>
                 </div>
@@ -55,7 +55,7 @@ const Card = ({card, onClick, style}) => {
                 <div className={ applyStyle.position }>
                     <FaRegUser/> {position}
                 </div>
-                <div className={`${ applyStyle.cardState } ${ fontStyle.sunflower }`}>
+                <div className={`${ applyStyle.cardState } ${ fontStyle.sunflower }`} onClick={() => onClickResume(card._id)}>
                     {card.cardState}
                 </div>
             </div>

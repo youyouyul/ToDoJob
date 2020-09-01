@@ -1,0 +1,86 @@
+.body {
+    justify-content: center;
+    margin: 0 1rem 0 1rem;
+}
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin: 1rem 4rem 1rem 4rem;
+}
+.update {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 4rem;
+}
+.updateBtn {
+    background-color: #e4aadf;
+    outline: none;
+    border: none;
+    border-radius: 2rem;
+    color: white;
+    padding: 0.5rem;
+    margin: 0.2rem;
+}
+
+.deleteBtn {
+    background-color: #9692cc;
+    outline: none;
+    border: none;
+    border-radius: 2rem;
+    color: white; 
+    padding: 0.5rem;
+    margin: 0.2rem;
+}
+
+.updateBtn:hover {
+    background-color: #f771ec;
+}
+
+.deleteBtn:hover {
+    background-color: #515abb;
+}
+
+.info {
+    display: flex;
+    background-color: #f0ecff;
+    justify-content: center;
+}
+
+.resume {
+    display: flex;
+    background-color: #e0ffdc;
+}
+
+.infoBox {
+    margin: 1rem;
+    width: 100%;
+}
+
+.companyName {
+    display: flex;
+    justify-content: center;
+    margin: 1rem;
+}
+
+.companyName span {
+    font-size: 3rem;
+    padding: 0;
+    color: blueviolet;
+}
+
+.inputBox {
+    display: flex;
+    font-size: 1rem;
+    margin: 1rem;
+}
+
+.inputBox label {
+    width: 5rem;
+    color: #8870e4;
+}
+
+.inputBox p {
+    margin: 0 1rem 0 1rem;
+    font-size: 1rem;
+}

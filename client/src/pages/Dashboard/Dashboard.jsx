@@ -8,7 +8,7 @@ import Application from '../../components/views/Application/Application';
 import dashboartStyle from '../Dashboard/dashboard.module.css';
 import fontStyle from '../../assets/css/fonts.module.css';
 
-function Dashboard({ match }) {
+function Dashboard({ match, history }) {
     const userName = match.params.userName;
 
     return (
@@ -24,19 +24,19 @@ function Dashboard({ match }) {
                 <div className={ dashboartStyle.gap }></div>
                 {/* 서류 */}
                 <div className={ fontStyle.sunflower }>>> 서류전형</div>
-                <Application />
+                <Application userName={userName} history={history}/>
                 <div className={ dashboartStyle.gap }></div>
                 {/* 시험 */}
                 <div className={ fontStyle.sunflower }>>> 시험</div>
-                <Application />
+                {/* <Application /> */}
                 <div className={ dashboartStyle.gap }></div>
                 {/* 1차 면접*/}
                 <div className={ fontStyle.sunflower }>>> 1차면접</div>
-                <Application />
+                {/* <Application /> */}
                 <div className={ dashboartStyle.gap }></div>
                 {/* 2차 면접 */}
                 <div className={ fontStyle.sunflower }>>> 2차면접</div>
-                <Application />
+                {/* <Application /> */}
                 <div className={ dashboartStyle.gap }></div>
             </div>
             

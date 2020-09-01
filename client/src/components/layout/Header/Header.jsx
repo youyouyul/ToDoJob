@@ -15,12 +15,12 @@ function Header() {
                 </span> 
             </div>
 
-            <div className={ headerStyle.headerCenter }>
+            {/* <div className={ headerStyle.headerCenter }>
                 <div className={ headerStyle.headerSearch } style={{ padding: '0 10px'}}>
                     <input className={ headerStyle.headerInput }
                            type="text" placeholder="할 일 검색" />
                 </div>
-            </div>
+            </div> */}
 
             { /* search & profile */ }
             <div className={ headerStyle.headerRight }>

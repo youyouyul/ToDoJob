@@ -1,19 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '../../components/layout/Header/Header';
 import Footer from '../../components/layout/Footer/Footer';
 import ToDoList from '../../components/views/ToDoList/ToDoList';
 import RecruitsSite from '../../components/views/RecruitsSite/RecruitsSite';
 import Application from '../../components/views/Application/Application';
-
+import UploadCard from '../../components/modals/UploadCard/UploadCard';
 import dashboartStyle from '../Dashboard/dashboard.module.css';
 import fontStyle from '../../assets/css/fonts.module.css';
 
+
 function Dashboard({ match, history }) {
     const userName = match.params.userName;
+    const [state, setState] = useState(false);
+
+    const onClick = () => {
+        setState(!state);
+    }
 
     return (
         <div>
-            <Header />
+            <Header onClick={onClick}/>
+            { state ? <UploadCard modalIsOpen={state}/> : null }
             <div className={ dashboartStyle.boxContainer } >
                 {/* To Do */}
                 <ToDoList userName={ userName }/>
@@ -39,7 +46,6 @@ function Dashboard({ match, history }) {
                 {/* <Application /> */}
                 <div className={ dashboartStyle.gap }></div>
             </div>
-            
             <Footer />
         </div>
     )

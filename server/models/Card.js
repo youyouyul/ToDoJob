@@ -28,6 +28,9 @@ const cardSchema = mongoose.Schema({
     infoState: {
         type: String
     },
+    memo: {
+        type: String
+    },
     cardState: {
         type: String
     }

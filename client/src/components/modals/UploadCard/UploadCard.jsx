@@ -1,59 +1,45 @@
 import React from 'react'
-import Modal from 'react-modal';
 import uploadStyle from '../UploadCard/uploadCard.module.css';
+import fontStyle from '../../../assets/css/fonts.module.css';
+import { FaTimes } from 'react-icons/fa';
 
 function UploadCard({ modalIsOpen }) {
 
-    const customStyles = {
-        content : {
-          top                   : '50%',
-          left                  : '50%',
-          right                 : 'auto',
-          bottom                : 'auto',
-          marginRight           : '-50%',
-          transform             : 'translate(-50%, -50%)'
-        }
-      };
-
-    Modal.setAppElement('#root');
-
     return (
-        <Modal
-          isOpen={modalIsOpen}
-          style={customStyles}  
-          contentLabel="Example Modal"
-        >
-
-            <button>close</button>
-            <div>I am a modal</div>
-            <form>
-                <div>
-                <label>기업 명</label>
-                <input />
+        <div className={ uploadStyle.container}>
+            <div className={ uploadStyle.modal}>
+                <div className={ uploadStyle.modalHeader}>
+                    <button><FaTimes/></button>
                 </div>
-                <div>
-                <label>시작일</label>
-                <input />    
+                <div className={ uploadStyle.modalBody}>
+                    <form className={ `${ uploadStyle.modalForm } ${ fontStyle.sunflower }`}>
+                        <div>
+                            <label>기업 명</label>
+                            <input />
+                        </div>
+                        <div>
+                            <label>시작일</label>
+                            <input />    
+                        </div>
+                        <div>
+                            <label>마감일</label>
+                            <input />
+                        </div>
+                        <div>
+                            <label>발표일</label>
+                            <input />  
+                        </div>
+                        <div>
+                            <label>직무</label>
+                            <input />
+                        </div>
+                    </form>
                 </div>
-                <div>
-                <label>마감일</label>
-                <input />
+                <div className={ uploadStyle.modalFooter }>
+                    <button>저장</button>
                 </div>
-                <div>
-                <label>발표일</label>
-                <input />  
-                </div>
-                <div>
-                <label>직무</label>
-                <input />
-                </div>
-
-                <button>tab navigation</button>
-                <button>stays</button>
-                <button>inside</button>
-                <button>the modal</button>
-          </form>
-        </Modal>
+          </div>
+        </div>
     )
 }
 

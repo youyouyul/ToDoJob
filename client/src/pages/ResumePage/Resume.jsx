@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import resumeStyle from '../ResumePage/resumePage.module.css';
 
 function Resume({ context, onChange, limit }) {

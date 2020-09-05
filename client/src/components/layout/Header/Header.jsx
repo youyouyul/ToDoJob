@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import headerStyle from '../Header/header.module.css';
 import fontStyle from '../../../assets/css/fonts.module.css';
 import logo from '../../../assets/image/logo.png';

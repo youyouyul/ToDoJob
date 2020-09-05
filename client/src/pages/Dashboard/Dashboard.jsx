@@ -7,10 +7,12 @@ import Application from '../../components/views/Application/Application';
 import UploadCard from '../../components/modals/UploadCard/UploadCard';
 import dashboartStyle from '../Dashboard/dashboard.module.css';
 import fontStyle from '../../assets/css/fonts.module.css';
+import Axios from 'axios';
 
 
 function Dashboard({ match, history }) {
     const userName = match.params.userName;
+
     const [state, setState] = useState(false);
 
     const onClick = () => {
@@ -31,19 +33,19 @@ function Dashboard({ match, history }) {
                 <div className={ dashboartStyle.gap }></div>
                 {/* 서류 */}
                 <div className={ fontStyle.sunflower }>>> 서류전형</div>
-                <Application userName={userName} history={history}/>
+                <Application userName={userName} history={history} state={"APPLY"}/>
                 <div className={ dashboartStyle.gap }></div>
                 {/* 시험 */}
                 <div className={ fontStyle.sunflower }>>> 시험</div>
-                {/* <Application /> */}
+                <Application userName={userName} history={history} state={"TEST"}/>
                 <div className={ dashboartStyle.gap }></div>
                 {/* 1차 면접*/}
                 <div className={ fontStyle.sunflower }>>> 1차면접</div>
-                {/* <Application /> */}
+                <Application userName={userName} history={history} state={"INTERVIEW"}/>
                 <div className={ dashboartStyle.gap }></div>
                 {/* 2차 면접 */}
                 <div className={ fontStyle.sunflower }>>> 2차면접</div>
-                {/* <Application /> */}
+                {/* <Application userName={userName} history={history} state={"APPLY"}/> */}
                 <div className={ dashboartStyle.gap }></div>
             </div>
             <Footer />

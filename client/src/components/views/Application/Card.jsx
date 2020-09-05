@@ -6,6 +6,20 @@ import { ImQuotesLeft, ImQuotesRight } from 'react-icons/im';
 
 const Card = ({card, onClickResume, style}) => {
 
+    const startDate = card.startDate.substring(0, 10);
+    const endDate = card.endDate.substring(0, 10);
+    function cardState() {
+        console.log("1")
+        switch (card.state) {
+            case "PREPARING" :
+                return "준비중"
+            case "WAITING" :
+                return "대기중"
+            default:
+                break;
+        }
+    }
+
     const now = new Date();
     const end = new Date(card.endDate);
     const duration = () => {
@@ -43,7 +57,7 @@ const Card = ({card, onClickResume, style}) => {
                         시험 : 시험 날짜 
                         면접 : 면접 날짜 
                     */}
-                    <FaCalendarCheck /> {card.startDate} ~ {card.endDate}
+                    <FaCalendarCheck /> {startDate} ~ {endDate}
                 </div>
                 <div className={`${ applyStyle.duration } ${ fontStyle.hiMelody}`}>
                     {/*
@@ -56,7 +70,7 @@ const Card = ({card, onClickResume, style}) => {
                     <FaRegUser/> {position}
                 </div>
                 <div className={`${ applyStyle.cardState } ${ fontStyle.sunflower }`} onClick={() => onClickResume(card._id)}>
-                    {card.cardState}
+                    { cardState() }
                 </div>
             </div>
         </div> 

@@ -2,40 +2,45 @@ const mongoose = require('mongoose');
 
 const cardSchema = mongoose.Schema({
     userName: {
-        type: String
+        type: String,
+        require: true
     },
     companyName: {
         type: String,
+        require: true,
         maxLength: 20
     },
     startDate: {
-        type: Date
+        type: Date,
+        require: true
     },
     endDate: {
-        type: Date
+        type: Date,
+        require: true
     },
     infoDate: {
         type: Date
     },
     companyUrl: {
         type: String,
+        require: true,
         maxLength: 50
     },
     jobPosition: {
         type: String,
-        maxLength: 100
-    },
-    infoState: {
-        type: String
+        require: true,
+        maxLength: 50
     },
     memo: {
         type: String
     },
     process: {
-        type: String
+        type: String,
+        default: "RESUME"
     },
     state: {
-        type: String
+        type: String,
+        default: "PREPARING"
     }
 });
 

@@ -17,19 +17,26 @@
 
 .modal {
     display: grid;
-    width: 50%;
+    width: 40%;
     height: auto;
     border-radius: 1.5rem;
 }
 
 .modalHeader {
     display: flex;
-    justify-content: flex-end;
     height: 4rem;
     background-color: #40919e;
 }
 
+.modalHeader p {
+    width: 95%;
+    font-size: 1.5rem;
+    margin: 1rem;
+}
+
 .modalHeader button {
+    display: flex;
+    justify-content: flex-end;
     background-color: transparent;
     border: none;
     font-size: 1.2rem;

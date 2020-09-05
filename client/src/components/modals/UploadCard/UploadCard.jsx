@@ -40,12 +40,13 @@ function UploadCard({ userName, onClick }) {
 
     return (
         <div className={ uploadStyle.container}>
-            <div className={ uploadStyle.modal}>
+            <div className={ `${ uploadStyle.modal } ${ fontStyle.sunflower }`}>
                 <div className={ uploadStyle.modalHeader}>
+                    <p>자소서 등록</p>
                     <button onClick={onClick}><FaTimes/></button>
                 </div>
                 <div className={ uploadStyle.modalBody}>
-                    <form className={ `${ uploadStyle.modalForm } ${ fontStyle.sunflower }`}
+                    <form className={ uploadStyle.modalForm }
                           onSubmit={onSubmit} >
                         <div>
                             <label>기업 명</label>

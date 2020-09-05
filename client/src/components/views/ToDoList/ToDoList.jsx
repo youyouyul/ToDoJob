@@ -11,7 +11,6 @@ function ToDoList({ userName }) {
     const [todoAll, setTodoAll] = useState([]);
 
     useEffect(() => {
-
         Axios.get('/api/todos/' + userName)
             .then(response => {
                 if(response.data.success) {
@@ -43,7 +42,7 @@ function ToDoList({ userName }) {
         Axios.post('/api/todos/insert', body)
             .then(response => {
                 if(!response.data.success) {
-                    alert("업로드에 실패했습니다.");
+                    alert("업로드를 실패했습니다.");
                 } else {
                     setTodoAll(todoAll.concat(response.data.todo));
                 }

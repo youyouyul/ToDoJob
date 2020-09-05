@@ -5,12 +5,11 @@ import Card from './Card';
 
 
 function Application ({userName, history, state}) {
-    console.log(state);
 
     const [cards, setCards] = useState([]);
 
     useEffect(() => {
-        Axios.get('/api/cards' + userName)
+        Axios.get('/api/cards/' + userName)
             .then(response => {
                 if(response.data.success) {
                     let list = response.data.cards;
@@ -18,7 +17,7 @@ function Application ({userName, history, state}) {
                     setCards(list.filter(index => index.process === state));
                 }
             })
-    }, []);
+    }, [userName]);
 
     // Dashboard에서 받은 Card State에 따라 변경
     const bgStyle = {
@@ -71,9 +70,6 @@ function Application ({userName, history, state}) {
     const onClickResume = (id) => {
         history.push('/' + userName + '/'+ id);
     }
-
-    console.log(cards.length);  
-
 
     return (
         cards.length > 0 ? 

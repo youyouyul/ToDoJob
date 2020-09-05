@@ -1,13 +1,18 @@
 .navigation {
     background-color: white;
     display: flex;
-    padding: 0.5rem;
+    margin: 0.5rem;
     align-items: center;
 }
 
 .headerLeft {
     padding: 10px 20px;
     flex-grow: 1;
+    display: flex;
+}
+
+.headerLeft span {
+    padding-left: 0.5rem;
 }
 
 .headerLogo {
@@ -16,39 +21,21 @@
     align-items: center;
 }
 
-.headerCenter {
-    margin-left: 1rem;
-    align-items: center;
-    justify-content: center;
-    padding: 0 10px;
-}
-
 .headerRight {
+    display: flex;
     margin-left: 1rem;
-    align-items: center;
+    padding: 0 1rem;
+}
+
+.profile {
+    display: flex;
     justify-content: flex-end;
-    padding: 0 10px;
 }
 
-.headerSearch {
-    align-items: center;
-    margin-left: 0.75rem;
-    padding-top: 0.25rem;
-    padding: 0 10px;
-}
-
-.headerInput {
-    appearance: none;
-    border-radius: 0.25rem;
-    width: 100%;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    padding-right: 0.75rem;
-    padding-left: 0.75rem;
-    line-height: 1.25;
-}
-
-.headerInput:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+.insertBtn {
+    display: inline-flex;
+    font-size: 2rem;
+    margin: 0 1.5rem 0 1.5rem;
+    color: #776f69;
+    cursor: pointer;
 }

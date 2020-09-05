@@ -6,11 +6,10 @@ const port = 5000;
 
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
 
 app.use(cors());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 const mongoose = require('mongoose');
@@ -22,6 +21,7 @@ mongoose.connect(config.mongoURI, {
 
 app.use('/api/users', require('./routes/users'));
 app.use('/api/todos', require('./routes/todoList'));
+app.use('/api/cards', require('./routes/cards'));
 
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(___dirname, "../client", "build", "index.html"));

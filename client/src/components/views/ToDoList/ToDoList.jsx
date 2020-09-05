@@ -11,11 +11,8 @@ function ToDoList({ userName }) {
     const [todoAll, setTodoAll] = useState([]);
 
     useEffect(() => {
-        let body = {
-            userName: userName
-        }
 
-        Axios.post('/api/todos/getTodoList', body)
+        Axios.get('/api/todos/' + userName)
             .then(response => {
                 if(response.data.success) {
                     setTodoAll(response.data.todoList);

@@ -18,8 +18,8 @@ router.post('/insert', (req, res) => {
 });
 
 // ToDo 리스트 조회
-router.post('/getTodoList', (req, res) => {
-    ToDoList.find({ "userName" : req.body.userName }, (err, todoList) => {
+router.get('/:userName', (req, res) => {
+    ToDoList.find({ "userName" : req.params.userName }, (err, todoList) => {
         if(err) 
             return res.status(400).send(err);
 
@@ -29,7 +29,7 @@ router.post('/getTodoList', (req, res) => {
 
 // 리스트 수정
 router.post('/update', (req, res) => {
-    ToDoList.findOneAndUpdate({ _id: req.body._id }, { checkFlag: !req.body.checkFlag }, (err, todoList) => {
+    ToDoList.findOneAndUpdate({ _id: req.body._id }, { $set : { checkFlag: !req.body.checkFlag }}, (err, todoList) => {
         if(err)
             return res.json({ success: false, err});
 

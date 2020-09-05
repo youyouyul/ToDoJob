@@ -28,7 +28,13 @@ const cardSchema = mongoose.Schema({
     infoState: {
         type: String
     },
-    cardState: {
+    memo: {
+        type: String
+    },
+    process: {
+        type: String
+    },
+    state: {
         type: String
     }
 });

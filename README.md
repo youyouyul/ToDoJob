@@ -36,6 +36,12 @@
         > - 기능 : 클릭 시 링크로 이동
         ![스크린샷 2020-08-28 오후 2 13 56](https://user-images.githubusercontent.com/53922357/91524264-b3f7f180-e939-11ea-9dbf-0deb9a2a3cab.png)
 
+    - Upload Card (개발 완료)
+        > 공고 등록 
+        > - 기능 : 등록
+        > - 구현 : 헤더의 등록 버튼 통해 모달 창 열어서 새로운 공고 등록
+         ![스크린샷 2020-09-05 오후 2 19 28](https://user-images.githubusercontent.com/53922357/92298351-de256100-ef82-11ea-87bb-d99b70b6b7f4.png)
+
 
 
     - Application (개발 진행 중)
@@ -49,7 +55,7 @@
         ![스크린샷 2020-08-28 오후 2 57 48](https://user-images.githubusercontent.com/53922357/91526565-e6f0b400-e93e-11ea-95d6-bbc6f3c4bcf4.png)
 
 
-    - Resume
+    - Resume (개발 진행 중)
         > 채용 공고 등록 및 지원서 작성 페이지
         > - 기능 : 등록 / 수정 / 조회 / 삭제
         > - 구현 :

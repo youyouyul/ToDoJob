@@ -7,7 +7,6 @@ import Application from '../../components/views/Application/Application';
 import UploadCard from '../../components/modals/UploadCard/UploadCard';
 import dashboartStyle from '../Dashboard/dashboard.module.css';
 import fontStyle from '../../assets/css/fonts.module.css';
-import Axios from 'axios';
 
 
 function Dashboard({ match, history }) {
@@ -22,7 +21,7 @@ function Dashboard({ match, history }) {
     return (
         <div>
             <Header onClick={onClick}/>
-            { state ? <UploadCard modalIsOpen={state}/> : null }
+            { state ? <UploadCard userName={userName} onClick={onClick}/> : null }
             <div className={ dashboartStyle.boxContainer } >
                 {/* To Do */}
                 <ToDoList userName={ userName }/>
@@ -33,7 +32,7 @@ function Dashboard({ match, history }) {
                 <div className={ dashboartStyle.gap }></div>
                 {/* 서류 */}
                 <div className={ fontStyle.sunflower }>>> 서류전형</div>
-                <Application userName={userName} history={history} state={"APPLY"}/>
+                <Application userName={userName} history={history} state={"RESUME"}/>
                 <div className={ dashboartStyle.gap }></div>
                 {/* 시험 */}
                 <div className={ fontStyle.sunflower }>>> 시험</div>

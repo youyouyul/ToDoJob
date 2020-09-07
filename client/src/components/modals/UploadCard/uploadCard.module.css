@@ -17,19 +17,26 @@
 
 .modal {
     display: grid;
-    width: 50%;
+    width: 40%;
     height: auto;
     border-radius: 1.5rem;
 }
 
 .modalHeader {
     display: flex;
-    justify-content: flex-end;
     height: 4rem;
     background-color: #40919e;
 }
 
+.modalHeader p {
+    width: 95%;
+    font-size: 1.5rem;
+    margin: 1rem;
+}
+
 .modalHeader button {
+    display: flex;
+    justify-content: flex-end;
     background-color: transparent;
     border: none;
     font-size: 1.2rem;
@@ -56,7 +63,7 @@
 .modalForm input {
     box-shadow: 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
     appearance: none;
-    border: 1rem;
+    border: 1.5rem;
     border-radius: 0.25rem;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
@@ -66,6 +73,10 @@
     line-height: 1.25;
     margin: 0 0 1rem 1rem;
     width: 90%;
+}
+
+.date {
+    display: flex;
 }
 
 .modalFooter {

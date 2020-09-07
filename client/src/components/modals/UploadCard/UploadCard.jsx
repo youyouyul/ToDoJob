@@ -49,24 +49,26 @@ function UploadCard({ userName, onClick }) {
                     <form className={ uploadStyle.modalForm }
                           onSubmit={onSubmit} >
                         <div>
-                            <label>기업 명</label>
+                            <label>기업 명 *</label>
                             <input value={ companyName } onChange={(e) => setCompanyName(e.target.value)} required/>
                         </div>
                         <div>
-                            <label>기업 사이트</label>
+                            <label>기업 사이트 *</label>
                             <input value={ companyUrl } onChange={(e) => setCompanyUrl(e.target.value)} required/>
                         </div>
                         <div>
-                            <label>직무</label>
+                            <label>직무 *</label>
                             <input value={ jobPosition } onChange={(e) => setJobPosition(e.target.value)} required/>
                         </div>
-                        <div>
-                            <label>시작일</label>
-                            <input value={ startDate } onChange={(e) => setStartDate(e.target.value)} required/>    
-                        </div>
-                        <div>
-                            <label>마감일</label>
+                        <div className={ uploadStyle.date}>
+                            <div style={{ marginRight: '3rem'}}>
+                                <label>시작일 *</label>
+                                <input value={ startDate } onChange={(e) => setStartDate(e.target.value)} required/>    
+                            </div>
+                            <div>
+                            <label>마감일 *</label>
                             <input value={ endDate } onChange={(e) => setEndDate(e.target.value)} required/>
+                            </div>
                         </div>
                         <div>
                             <label>발표일</label>

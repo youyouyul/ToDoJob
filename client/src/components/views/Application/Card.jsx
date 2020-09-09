@@ -9,7 +9,6 @@ const Card = ({card, onClickResume, style}) => {
     const startDate = card.startDate.substring(0, 10);
     const endDate = card.endDate.substring(0, 10);
     function cardState() {
-        console.log("1")
         switch (card.state) {
             case "PREPARING" :
                 return "준비중"

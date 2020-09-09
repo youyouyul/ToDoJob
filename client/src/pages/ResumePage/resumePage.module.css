@@ -8,10 +8,10 @@
     gap: 1rem;
     margin: 1rem 4rem 1rem 4rem;
 }
+
 .btn {
     display: flex;
     justify-content: flex-end;
-    margin-right: 4rem;
 }
 .updateBtn {
     background-color: #e4aadf;
@@ -59,11 +59,15 @@
     display: flex;
     background-color: #f0ecff;
     justify-content: center;
+    height: 50rem;
+    overflow: scroll;
 }
 
 .resume {
     display: flex;
     background-color: #e0ffdc;
+    height: 50rem;
+    overflow: scroll;
 }
 
 .infoBox {
@@ -106,10 +110,13 @@
 
 .memo {
     background-color: transparent;
-    border: 0;
+    border: 1rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.5);
     overflow-y: auto;
-    height: 10rem;
+    height: 20rem;
     resize: none;
+    margin: 1rem;
+    padding: 1rem;
 }
 
 .resumeBox {

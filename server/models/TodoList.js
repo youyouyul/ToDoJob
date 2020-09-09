@@ -1,10 +1,8 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 
 const todoListSchema = mongoose.Schema({
     userName: {
-        type: String,
-        ref: 'User'
+        type: String
     },
     context: {
         type: String,

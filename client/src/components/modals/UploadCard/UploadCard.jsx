@@ -74,10 +74,10 @@ function UploadCard({ userName, onClick }) {
                             <label>발표일</label>
                             <input value={ infoDate } onChange={(e) => setInfoDate(e.target.value)}/>  
                         </div>
-                        <div>
+                        {/* <div>
                             <label>메모</label>
                             <input value={ memo } onChange={(e) => setMemo(e.target.value)}/>
-                        </div>
+                        </div> */}
                         <div className={ uploadStyle.modalFooter }>
                             <button>저장</button>
                         </div>

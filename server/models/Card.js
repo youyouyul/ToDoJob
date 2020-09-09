@@ -31,9 +31,6 @@ const cardSchema = mongoose.Schema({
         require: true,
         maxLength: 50
     },
-    memo: {
-        type: String
-    },
     process: {
         type: String,
         default: "RESUME"
@@ -41,6 +38,9 @@ const cardSchema = mongoose.Schema({
     state: {
         type: String,
         default: "PREPARING"
+    },
+    result: {
+        type: String
     }
 });
 

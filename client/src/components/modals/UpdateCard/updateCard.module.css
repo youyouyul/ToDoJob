@@ -1,0 +1,35 @@
+.container {
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    top : 50%;
+    left : 50%;
+    right : auto;
+    bottom : auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right : -50%;
+    transform : translate(-50%, -50%);
+    background-color: #00000069;
+}
+
+.modal {
+    display: grid;
+    width: 40%;
+    height: auto;
+    border-radius: 1.5rem;
+}
+
+.modalHeader {
+    display: flex;
+    height: 4rem;
+    background-color: #40919e;
+}
+
+.modalHeader p {
+    width: 95%;
+    font-size: 1.5rem;
+    margin: 1rem;
+}

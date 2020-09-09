@@ -49,45 +49,54 @@ function ResumePage({ match }) {
         <div>
             <Header/>
             <div className={ resumeStyle.body }>
-                <div className={ resumeStyle.btn }>
-                    <button className={ resumeStyle.updateBtn } title="edit"><FaRegEdit/></button>
-                    <button className={ resumeStyle.saveBtn } title="save"><FaCheckDouble/></button>
-                    <button className={ resumeStyle.deleteBtn } title="delete"><FaRegTrashAlt/></button>
-                </div>
                 <div className={ resumeStyle.container } >
-                    <div className={ resumeStyle.info}>
-                        <form className={ resumeStyle.infoBox }>
-                            <div className={`${ resumeStyle.companyName } ${ fontStyle.doHyeon }`}>
-                                <ImQuotesLeft style={quotesStyle}/>
-                                <span>{card.companyName}</span>
-                                <ImQuotesRight style={quotesStyle}/>
-                            </div>
-                            <br/>
-                            <div className={ resumeStyle.inputBox }>
-                                <label className={ fontStyle.sunflower }><FaLocationArrow/> 바로가기</label>
-                                <p><a href={card.companyUrl}>{card.companyUrl}</a></p>
-                            </div>
-                            <div className={ resumeStyle.inputBox }>
-                                <label className={ fontStyle.sunflower }><FaRegCalendarCheck/> 접수기간 </label>
-                                <p>{card.startDate} ~ {card.endDate}</p>
-                            </div>
-                            <div className={ resumeStyle.inputBox }>
-                                <label className={ fontStyle.sunflower }><FaRegCalendarCheck/> 발표일 </label>
-                                <p>{card.infoDate}</p>
-                            </div>
-                            <div className={ resumeStyle.inputBox }>
-                                <label className={ fontStyle.sunflower }><FaRegUser/> 직무 </label>
-                                <p>{card.jobPosition}</p>
-                            </div>
-                            <div className={ resumeStyle.memoBox }>
-                                <label className={ fontStyle.sunflower }><FaRegStickyNote/> 메모 </label>
-                                <textarea className={ resumeStyle.memo } readOnly value={card.memo} />
-                            </div>
-                        </form>
+                    <div>
+                        <div className={ resumeStyle.btn }>
+                            <button className={ resumeStyle.updateBtn } title="edit"><FaRegEdit/></button>
+                            <button className={ resumeStyle.saveBtn } title="save"><FaCheckDouble/></button>
+                            <button className={ resumeStyle.deleteBtn } title="delete"><FaRegTrashAlt/></button>
+                        </div>
+                        <div className={ resumeStyle.info}>
+                            <form className={ resumeStyle.infoBox }>
+                                <div className={`${ resumeStyle.companyName } ${ fontStyle.doHyeon }`}>
+                                    <ImQuotesLeft style={quotesStyle}/>
+                                    <span>{card.companyName}</span>
+                                    <ImQuotesRight style={quotesStyle}/>
+                                </div>
+                                <br/>
+                                <div className={ resumeStyle.inputBox }>
+                                    <label className={ fontStyle.sunflower }><FaLocationArrow/> 바로가기</label>
+                                    <p><a href={card.companyUrl}>{card.companyUrl}</a></p>
+                                </div>
+                                <div className={ resumeStyle.inputBox }>
+                                    <label className={ fontStyle.sunflower }><FaRegCalendarCheck/> 접수기간 </label>
+                                    <p>{card.startDate} ~ {card.endDate}</p>
+                                </div>
+                                <div className={ resumeStyle.inputBox }>
+                                    <label className={ fontStyle.sunflower }><FaRegCalendarCheck/> 발표일 </label>
+                                    <p>{card.infoDate}</p>
+                                </div>
+                                <div className={ resumeStyle.inputBox }>
+                                    <label className={ fontStyle.sunflower }><FaRegUser/> 직무 </label>
+                                    <p>{card.jobPosition}</p>
+                                </div>
+                                <div className={ resumeStyle.memoBox }>
+                                    <label className={ fontStyle.sunflower }><FaRegStickyNote/> 메모 </label>
+                                    <textarea className={ resumeStyle.memo } readOnly value={card.memo} />
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                    <div className={ resumeStyle.resume}>
-                        <div className={ resumeStyle.infoBox }>
-                            { resume }
+                    <div>
+                        <div className={ resumeStyle.btn }>
+                            <button className={ resumeStyle.updateBtn } title="edit"><FaRegEdit/></button>
+                            <button className={ resumeStyle.saveBtn } title="save"><FaCheckDouble/></button>
+                            <button className={ resumeStyle.deleteBtn } title="delete"><FaRegTrashAlt/></button>
+                        </div>
+                        <div className={ resumeStyle.resume}>
+                            <div className={ resumeStyle.infoBox }>
+                                { resume }
+                            </div>
                         </div>
                     </div>
                 </div>

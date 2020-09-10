@@ -3,7 +3,6 @@ import Axios from 'axios';
 import UpdateCard from '../../modals/UpdateCard/UpdateCard';
 import applyStyle from '../Application/application.module.css';
 import Card from './Card';
-import {CARD_RESUME, CARD_TEST, CARD_INTERVIEW, CARD_FINAL } from '../../../Config';
 
 
 function Application ({userName, state, card}) {
@@ -39,7 +38,7 @@ function Application ({userName, state, card}) {
                 { cards.map(card => (
                     <Card card={card} key={card._id} onClick={onClickResume} style={bgStyle}/>
                 ))}
-            { updateState ? <UpdateCard card={updateCard}/> : null }
+            { updateState ? <UpdateCard cards={updateCard} onClick={onClickResume}/> : null }
             </div>
         : null
     )

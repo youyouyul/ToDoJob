@@ -7,7 +7,8 @@ import Application from '../../components/views/Application/Application';
 import UploadCard from '../../components/modals/UploadCard/UploadCard';
 import dashboartStyle from '../Dashboard/dashboard.module.css';
 import fontStyle from '../../assets/css/fonts.module.css';
-import UpdateCard from '../../components/modals/UpdateCard/UpdateCard';
+import { RESUME, TEST, INTERVIEW, FINAL } from '../../Config';
+
 
 
 function Dashboard({ match, history }) {
@@ -29,9 +30,9 @@ function Dashboard({ match, history }) {
             infoDate: '2020-09-11',
             companyUrl: 'http://google.com',
             jobPosition: 'Web Platform Service FrontEnd',
-            process: 'RESUME',
-            state: true,
-            result: '결과 대기'
+            process: 0,
+            state: 1,
+            result: 0
         },
         {
             _id: 2,
@@ -41,9 +42,9 @@ function Dashboard({ match, history }) {
             infoDate: '',
             companyUrl: 'http://naver.com',
             jobPosition: 'FrontEnd Web Service',
-            process: 'TEST',
-            state: false,
-            result: '준비 중'
+            process: 1,
+            state: 0,
+            result: 0
         },
         {
             _id: 3,
@@ -53,9 +54,9 @@ function Dashboard({ match, history }) {
             infoDate: '',
             companyUrl: 'http://google.com',
             jobPosition: 'SW Developer',
-            process: 'INTERVIEW',
-            state: true,
-            result: '결과 대기'
+            process: 2,
+            state: 1,
+            result: 0
         },
         {
             _id: 4,
@@ -65,15 +66,11 @@ function Dashboard({ match, history }) {
             infoDate: '2020-09-11',
             companyUrl: 'http://google.com',
             jobPosition: 'Front-End Developer',
-            process: 'FINAL',
-            state: true,
-            result: '최종 탈락'
+            process: 3,
+            state: 2,
+            result: 2
         }
     ];
-
-    // const onClickResume = () => {
-    //     setUpdateState(!updateState);
-    // }
 
     return (
         <div>
@@ -89,19 +86,19 @@ function Dashboard({ match, history }) {
                 <div className={ dashboartStyle.gap }></div>
                 {/* 서류 */}
                 <div className={ fontStyle.sunflower }>>> 서류전형</div>
-                <Application userName={userName} state={"RESUME"} card={cards}/>
+                <Application userName={userName} state={RESUME} card={cards}/>
                 <div className={ dashboartStyle.gap }></div>
                 {/* 시험 */}
                 <div className={ fontStyle.sunflower }>>> 시험</div>
-                <Application userName={userName} state={"TEST"} card={cards}/>
+                <Application userName={userName} state={TEST} card={cards}/>
                 <div className={ dashboartStyle.gap }></div>
                 {/* 1차 면접*/}
                 <div className={ fontStyle.sunflower }>>> 1차면접</div>
-                <Application userName={userName} state={"INTERVIEW"} card={cards}/>
+                <Application userName={userName} state={INTERVIEW} card={cards}/>
                 <div className={ dashboartStyle.gap }></div>
                 {/* 2차 면접 */}
                 <div className={ fontStyle.sunflower }>>> 2차면접</div>
-                <Application userName={userName} state={"FINAL"} card={cards}/>
+                <Application userName={userName} state={FINAL} card={cards}/>
                 <div className={ dashboartStyle.gap }></div>
             </div>
             <Footer />

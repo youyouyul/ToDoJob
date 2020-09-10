@@ -1,5 +1,7 @@
 import React from 'react'
-import { PREPARING, WAITING } from '../../../Config';
+import { RESUME, TEST, INTERVIEW, FINAL,
+         stateCode, 
+         processCode, resultCode} from '../../../Config';
 import applyStyle from '../Application/application.module.css';
 import fontStyle from '../../../assets/css/fonts.module.css';
 import { FaCalendarCheck, FaRegUser} from 'react-icons/fa';
@@ -25,7 +27,7 @@ const Card = ({card, onClick, style}) => {
     }
 
     const showDate = () => {
-        if(card.process === "RESUME") {
+        if(card.process === RESUME) {
             return startDate + " ~ " + endDate;
         } else {
             return endDate;
@@ -35,9 +37,10 @@ const Card = ({card, onClick, style}) => {
     const position = card.jobPosition.length > 20 ? card.jobPosition.substring(0, 20) + "..." : card.jobPosition;
 
     const showState = () => {
-        if(card.process === 'FINAL')
-            return card.result;
-        return card.state ? WAITING : PREPARING;
+        if(card.state === 2){
+            return processCode(card.process) + " " + resultCode(card.result);
+        }
+        return stateCode(card.state);
     }
 
     const quotesStyle = {

@@ -15,7 +15,6 @@ function Dashboard({ match, history }) {
     const userName = match.params.userName;
 
     const [state, setState] = useState(false);
-    //const [updateState, setUpdateState] = useState(false);
 
     const onClick = () => {
         setState(!state);

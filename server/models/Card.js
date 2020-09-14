@@ -32,15 +32,16 @@ const cardSchema = mongoose.Schema({
         maxLength: 50
     },
     process: {
-        type: String,
-        default: "RESUME"
+        type: Number,
+        default: 0
     },
     state: {
-        type: String,
-        default: "PREPARING"
+        type: Number,
+        default: 0
     },
     result: {
-        type: String
+        type: Number,
+        default: 0
     }
 });
 

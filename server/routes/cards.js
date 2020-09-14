@@ -33,8 +33,9 @@ router.put('/update', (req, res) => {
         infoDate : req.body.infoDate,
         companyUrl: req.body.companyUrl,
         jobPosition : req.body.jobPosition,
-        infoState : req.body.infoState,
-        memo : req.body.memo
+        process : req.body.process,
+        state : req.body.state,
+        result: req.body.result
     }}, (err, card) => {
         if(err)
             return res.status(400).json({ success: false });

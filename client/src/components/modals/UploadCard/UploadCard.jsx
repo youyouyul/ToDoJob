@@ -61,16 +61,16 @@ function UploadCard({ userName, onClick }) {
                         <div className={ modalStyle.date}>
                             <div style={{ marginRight: '1rem'}}>
                                 <label>시작일 *</label>
-                                <input value={ startDate } onChange={(e) => setStartDate(e.target.value)} required/>    
+                                <input value={ startDate } onChange={(e) => setStartDate(e.target.value)} placeholder="0000-00-00" required/>    
                             </div>
                             <div>
                                 <label>마감일 *</label>
-                                <input value={ endDate } onChange={(e) => setEndDate(e.target.value)} required/>
+                                <input value={ endDate } onChange={(e) => setEndDate(e.target.value)} placeholder="0000-00-00" required/>
                             </div>
                         </div>
                         <div>
                             <label>발표일</label>
-                            <input value={ infoDate } onChange={(e) => setInfoDate(e.target.value)} />  
+                            <input value={ infoDate } onChange={(e) => setInfoDate(e.target.value)} placeholder="0000-00-00"/>  
                         </div>
                         <div className={ modalStyle.modalFooter }>
                             <button>저장</button>

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import fontStyle from '../../../assets/css/fonts.module.css';
 import modalStyle from '../../modals/modals.module.css';
 import { FaTimes } from 'react-icons/fa';
+import Axios from 'axios';
 
 const DetailCard = ({ cards, onClick }) => {
     const card = cards[0];
@@ -49,6 +50,12 @@ const DetailCard = ({ cards, onClick }) => {
 
     const onClickDlt = () => {
 
+        Axios.delete('/api/cards/delete/' + card._id)
+            .then(response => {
+                if(!response.data.success)
+                    alert("삭제를 실패했습니다.");
+                else console.log(response.data);
+            })
     }
 
     return (

@@ -7,8 +7,9 @@ import DetailCard from '../../modals/DetailCard/DetailCard';
 
 function Application ({userName, state, card}) {
 
-    const cards = card.filter(index => index.process === state);
+    //const cards = card.filter(index => index.process === state);
 
+    const [cards, setCards] = useState([]);
     const [detailState, setDetailState] = useState(false);
     const [updateState, setUpdateState] = useState(false);
     const [detailCard, setDetailCard] = useState([]);
@@ -16,24 +17,24 @@ function Application ({userName, state, card}) {
 
     const onClickDetail = (id) => {
         setDetailState(!detailState);
-        setDetailCard(card.filter(index => index._id === id));
+        setDetailCard(cards.filter(index => index._id === id));
     }
 
     const onClickState = (id) => {
         setUpdateState(!updateState);
-        setUpdateCard(card.filter(index => index._id === id));
+        setUpdateCard(cards.filter(index => index._id === id));
     }
 
-    // useEffect(() => {
-    //     Axios.get('/api/cards/' + userName)
-    //         .then(response => {
-    //             if(response.data.success) {
-    //                 let list = response.data.cards;
+    useEffect(() => {
+        Axios.get('/api/cards/' + userName)
+            .then(response => {
+                if(response.data.success) {
+                    let list = response.data.cards;
 
-    //                 setCards(list.filter(index => index.process === state));
-    //             }
-    //         })
-    // }, [userName]);
+                    setCards(list.filter(index => index.process === state));
+                }
+            })
+    }, [userName]);
 
     // Dashboard에서 받은 Card State에 따라 변경
     const bgStyle = {

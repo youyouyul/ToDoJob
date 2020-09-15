@@ -44,8 +44,24 @@ router.put('/update', (req, res) => {
     })
 })
 
-router.delete('/delete', (req, res) => {
-    Card.remove({ _id: re1.body._id }, (err) => {
+// card state 수정
+router.patch('/update/:_id', (req, res) => {
+    Card.findOneAndUpdate({ _id: req.params._id }, { $set : {
+        endDate : req.body.endDate,
+        infoDate : req.body.infoDate,
+        process : req.body.process,
+        result: req.body.result
+    }}, (err, card) => {
+        if(err)
+            return res.status(400).json({ success: false });
+        
+        return res.status(200).json({ success: true, card });
+    })
+})
+
+// card 삭제
+router.delete('/delete/:_id', (req, res) => {
+    Card.findByIdAndDelete({ _id: req.params._id }, (err) => {
         if(err)
             return res.status(400).json({ success: false });
 

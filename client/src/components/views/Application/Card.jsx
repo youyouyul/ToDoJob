@@ -35,10 +35,10 @@ const Card = ({card, onClickDetail, onClickState, style}) => {
     }
 
     const showState = () => {
-        if(card.state === 2){
+        if(card.result > 1){
             return processCode(card.process) + " " + resultCode(card.result);
         }
-        return stateCode(card.state);
+        return resultCode(card.result);
     }
 
     const quotesStyle = {

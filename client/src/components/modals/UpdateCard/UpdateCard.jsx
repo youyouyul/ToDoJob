@@ -25,7 +25,7 @@ const UpdateCard = ({ cards, onClick }) => {
             result: result == IN ? DOING : result
         }
 
-        Axios.patch('/api/cards/update/' + card._id, body)
+        Axios.patch('/api/cards/update/state/' + card._id, body)
             .then(response => {
                 console.log(response.data);
                 if(!response.data.success) {

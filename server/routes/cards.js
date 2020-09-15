@@ -26,16 +26,13 @@ router.post('/insert', (req, res) => {
 })
 
 // card 수정
-router.put('/update', (req, res) => {
-    Card.findOneAndUpdate({ _id: req.body._id }, { $set : {
-        startDate: req.body.startDate,
-        endDate : req.body.endDate,
-        infoDate : req.body.infoDate,
+router.patch('/update/:_id', (req, res) => {
+    Card.findByIdAndUpdate({ _id: req.params._id }, { $set : {
         companyUrl: req.body.companyUrl,
         jobPosition : req.body.jobPosition,
-        process : req.body.process,
-        state : req.body.state,
-        result: req.body.result
+        startDate: req.body.startDate,
+        endDate : req.body.endDate,
+        infoDate : req.body.infoDate
     }}, (err, card) => {
         if(err)
             return res.status(400).json({ success: false });
@@ -45,8 +42,8 @@ router.put('/update', (req, res) => {
 })
 
 // card state 수정
-router.patch('/update/:_id', (req, res) => {
-    Card.findOneAndUpdate({ _id: req.params._id }, { $set : {
+router.patch('/update/state/:_id', (req, res) => {
+    Card.findByIdAndUpdate({ _id: req.params._id }, { $set : {
         endDate : req.body.endDate,
         infoDate : req.body.infoDate,
         process : req.body.process,

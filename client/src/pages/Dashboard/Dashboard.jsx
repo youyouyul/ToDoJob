@@ -71,10 +71,11 @@ function Dashboard({ match, history }) {
         }
     ];
 
+    const modalState = "DETAIL";
     return (
         <div>
             <Header onClick={onClick}/>
-            { state ? <UploadCard userName={userName} onClick={onClick}/> : null }
+            { state ? <UploadCard userName={userName} onClick={onClick} modalState={modalState}/> : null }
             <div className={ dashboartStyle.boxContainer } >
                 {/* To Do */}
                 <ToDoList userName={ userName }/>

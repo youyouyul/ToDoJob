@@ -3,15 +3,23 @@ import Axios from 'axios';
 import UpdateCard from '../../modals/UpdateCard/UpdateCard';
 import applyStyle from '../Application/application.module.css';
 import Card from './Card';
-
+import DetailCard from '../../modals/DetailCard/DetailCard';
 
 function Application ({userName, state, card}) {
 
     const cards = card.filter(index => index.process === state);
+
+    const [detailState, setDetailState] = useState(false);
     const [updateState, setUpdateState] = useState(false);
+    const [detailCard, setDetailCard] = useState([]);
     const [updateCard, setUpdateCard] = useState([]);
 
-    const onClickResume = (id) => {
+    const onClickDetail = (id) => {
+        setDetailState(!detailState);
+        setDetailCard(card.filter(index => index._id === id));
+    }
+
+    const onClickState = (id) => {
         setUpdateState(!updateState);
         setUpdateCard(card.filter(index => index._id === id));
     }
@@ -36,9 +44,10 @@ function Application ({userName, state, card}) {
         cards.length > 0 ? 
             <div className={ applyStyle.container }>
                 { cards.map(card => (
-                    <Card card={card} key={card._id} onClick={onClickResume} style={bgStyle}/>
+                    <Card card={card} key={card._id} onClickDetail={onClickDetail} onClickState={onClickState} style={bgStyle}/>
                 ))}
-            { updateState ? <UpdateCard cards={updateCard} onClick={onClickResume}/> : null }
+            { detailState ? <DetailCard cards={detailCard} onClick={onClickDetail}/> : null }    
+            { updateState ? <UpdateCard cards={updateCard} onClick={onClickState}/> : null }
             </div>
         : null
     )

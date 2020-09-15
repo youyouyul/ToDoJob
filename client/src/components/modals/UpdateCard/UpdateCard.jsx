@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import updateStyle from '../UpdateCard/updateCard.module.css';
+import modalStyle from '../../modals/modals.module.css';
 import { FaTimes } from 'react-icons/fa';
 import { RESUME, TEST, INTERVIEW, FINAL,
          DOING, IN, OUT ,
@@ -19,20 +19,20 @@ const UpdateCard = ({ cards, onClick }) => {
     }
 
     return (
-        <div className={ updateStyle.container }>
-            <div className={ updateStyle.modal }>
-                <div className={ updateStyle.modalHeader}>
+        <div className={ modalStyle.container }>
+            <div className={ modalStyle.modal }>
+                <div className={ modalStyle.modalHeader}>
                     <p>{ card.companyName }</p>
                     <button onClick={onClick}><FaTimes/></button>
                 </div>
-                <div className={ updateStyle.modalBody}>
-                    <form className={ updateStyle.modalForm }
+                <div className={ modalStyle.modalBody}>
+                    <form className={ modalStyle.modalForm }
                           onSubmit={onSubmit}>
-                        <div className={ updateStyle.formDiv}>
+                        <div>
                             <label>전형</label>
                             <input value={processCode(card.process)} readOnly/>    
                         </div>
-                        <div className={ updateStyle.formDiv}>
+                        <div>
                             <label>결과</label>
                             <select value={result} onChange={(e) => setResult(e.target.value)}>
                                 <option value={DOING}>진행 중</option>
@@ -43,7 +43,7 @@ const UpdateCard = ({ cards, onClick }) => {
                         <hr/>
                         { result === "1" ? 
                         <div>
-                            <div className={ updateStyle.formDiv}>
+                            <div>
                                 <label>다음 전형 *</label>
                                 <select value={process} onChange={(e) => setProcess(e.target.value)}>
                                     <option value={RESUME}>서류</option>
@@ -52,17 +52,19 @@ const UpdateCard = ({ cards, onClick }) => {
                                     <option value={FINAL}>최종</option>
                                 </select>
                             </div>
-                            <div className={ updateStyle.formDiv}>
-                                <label>날짜 *</label>
-                                <input value={date} onChange={(e) => setDate(e.target.value)} required/>    
-                            </div>
-                            <div className={ updateStyle.formDiv}>
-                                <label>발표일</label>
-                                <input value={infoDate} onChange={(e) => setInfoDate(e.target.value)}/>
+                            <div className={ modalStyle.date }>
+                                <div style={{ marginRight: '0.5rem'}}>
+                                    <label>날짜 *</label>
+                                    <input value={date} onChange={(e) => setDate(e.target.value)} required/>    
+                                </div>
+                                <div>
+                                    <label>발표일</label>
+                                    <input value={infoDate} onChange={(e) => setInfoDate(e.target.value)}/>
+                                </div>
                             </div>
                         </div>
                         : null }
-                        <div className={ updateStyle.modalFooter }>
+                        <div className={ modalStyle.modalFooter }>
                             <button>저장</button>
                         </div>
                     </form>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import uploadStyle from '../UploadCard/uploadCard.module.css';
+import modalStyle from '../../modals/modals.module.css';
 import fontStyle from '../../../assets/css/fonts.module.css';
 import { FaTimes } from 'react-icons/fa';
 import Axios from 'axios';
@@ -12,7 +12,6 @@ function UploadCard({ userName, onClick }) {
     const [infoDate, setInfoDate] = useState("");
     const [companyUrl, setCompanyUrl] = useState("");
     const [jobPosition, setJobPosition] = useState("");
-    const [memo, setMemo] = useState("");
 
     const onSubmit = (e) => {
 
@@ -24,8 +23,7 @@ function UploadCard({ userName, onClick }) {
             endDate: new Date(endDate),
             infoDate: new Date(infoDate),
             companyUrl: companyUrl,
-            jobPosition: jobPosition,
-            memo: memo
+            jobPosition: jobPosition
         }
 
         Axios.post('/api/cards/insert', body)
@@ -39,14 +37,14 @@ function UploadCard({ userName, onClick }) {
     }
 
     return (
-        <div className={ uploadStyle.container}>
-            <div className={ `${ uploadStyle.modal } ${ fontStyle.sunflower }`}>
-                <div className={ uploadStyle.modalHeader}>
+        <div className={ modalStyle.container}>
+            <div className={ `${ modalStyle.modal } ${ fontStyle.sunflower }`}>
+                <div className={ modalStyle.modalHeader}>
                     <p>자소서 등록</p>
                     <button onClick={onClick}><FaTimes/></button>
                 </div>
-                <div className={ uploadStyle.modalBody}>
-                    <form className={ uploadStyle.modalForm }
+                <div className={ modalStyle.modalBody}>
+                    <form className={ modalStyle.modalForm }
                           onSubmit={onSubmit} >
                         <div>
                             <label>기업 명 *</label>
@@ -60,25 +58,21 @@ function UploadCard({ userName, onClick }) {
                             <label>직무 *</label>
                             <input value={ jobPosition } onChange={(e) => setJobPosition(e.target.value)} required/>
                         </div>
-                        <div className={ uploadStyle.date}>
-                            <div style={{ marginRight: '3rem'}}>
+                        <div className={ modalStyle.date}>
+                            <div style={{ marginRight: '1rem'}}>
                                 <label>시작일 *</label>
                                 <input value={ startDate } onChange={(e) => setStartDate(e.target.value)} required/>    
                             </div>
                             <div>
-                            <label>마감일 *</label>
-                            <input value={ endDate } onChange={(e) => setEndDate(e.target.value)} required/>
+                                <label>마감일 *</label>
+                                <input value={ endDate } onChange={(e) => setEndDate(e.target.value)} required/>
                             </div>
                         </div>
                         <div>
                             <label>발표일</label>
-                            <input value={ infoDate } onChange={(e) => setInfoDate(e.target.value)}/>  
+                            <input value={ infoDate } onChange={(e) => setInfoDate(e.target.value)} />  
                         </div>
-                        {/* <div>
-                            <label>메모</label>
-                            <input value={ memo } onChange={(e) => setMemo(e.target.value)}/>
-                        </div> */}
-                        <div className={ uploadStyle.modalFooter }>
+                        <div className={ modalStyle.modalFooter }>
                             <button>저장</button>
                         </div>
                     </form>

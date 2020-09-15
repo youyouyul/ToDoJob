@@ -24,30 +24,31 @@
     justify-content: center;
 }
 
-.companyName a{
+.companyName span{
     font-size: 2rem;
     margin: 0 0.5rem 0 0.5rem;
     color: slategray;
     cursor: pointer;
 }
 
-.companyName a:hover{
+.companyName span:hover{
     color:green;
 }
 
 .date {
-    margin: 1rem 0 1rem 0;
+    margin: 1.5rem 0 1.5rem 0;
     font-size: 0.8rem;
     color: #4e4b50;
 }
 
 .duration {
+    margin: 1.5rem;
     font-size: 1.5rem;
     color: #ff0d00;
 }
 
-.position {
-    margin: 1.5rem 0 1.5rem 0;
+.companyUrl {
+    margin: 0.5rem 0 1rem 0;
     color: grey;
 }
 

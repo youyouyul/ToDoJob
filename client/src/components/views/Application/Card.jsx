@@ -1,13 +1,11 @@
 import React from 'react'
-import { RESUME, TEST, INTERVIEW, FINAL,
-         stateCode, 
-         processCode, resultCode} from '../../../Config';
+import { RESUME, processCode, resultCode} from '../../../Config';
 import applyStyle from '../Application/application.module.css';
 import fontStyle from '../../../assets/css/fonts.module.css';
 import { FaCalendarCheck, FaHome} from 'react-icons/fa';
 import { ImQuotesLeft, ImQuotesRight } from 'react-icons/im';
 
-const Card = ({card, onClickDetail, onClickState, style}) => {
+const Card = ({card, onClickModalState, style}) => {
 
     const startDate = card.startDate.substring(0, 10);
     const endDate = card.endDate.substring(0, 10);
@@ -21,7 +19,7 @@ const Card = ({card, onClickDetail, onClickState, style}) => {
             return "D - " + dur;
         else if(dur === 0) return "D-day";
         else {
-            if(card.infoDate !== '') return "발표 : " + card.infoDate;
+            if(card.infoDate !== "" & card.infoDate !== null) return "발표 : " + card.infoDate.substring(0, 10);
             else return "D + " + (dur * -1);
         }
     }
@@ -34,7 +32,7 @@ const Card = ({card, onClickDetail, onClickState, style}) => {
         }
     }
 
-    const showState = () => {
+    const showResult = () => {
         if(card.result > 1){
             return processCode(card.process) + " " + resultCode(card.result);
         }
@@ -51,7 +49,7 @@ const Card = ({card, onClickDetail, onClickState, style}) => {
             <div className={ applyStyle.cardInfo }>
                 <div className={ `${applyStyle.companyName} ${fontStyle.jua}` }>
                     <ImQuotesLeft style={quotesStyle}/>
-                    <span onClick={() => onClickDetail(card._id)}>{ card.companyName }</span>
+                    <span onClick={() => onClickModalState(card._id, "DETAIL")}>{ card.companyName }</span>
                     <ImQuotesRight style={quotesStyle}/>
                 </div>
                 <div className={ applyStyle.companyUrl }>
@@ -63,8 +61,8 @@ const Card = ({card, onClickDetail, onClickState, style}) => {
                 <div className={`${ applyStyle.duration } ${ fontStyle.hiMelody}`}>
                     { duration() }
                 </div>
-                <div className={`${ applyStyle.cardState } ${ fontStyle.sunflower }`} onClick={() => onClickState(card._id)}>
-                    { showState() }
+                <div className={`${ applyStyle.cardState } ${ fontStyle.sunflower }`} onClick={() => onClickModalState(card._id, "UPDATE")}>
+                    { showResult() }
                 </div>
             </div>
         </div> 

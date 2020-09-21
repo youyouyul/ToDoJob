@@ -33,7 +33,7 @@ router.patch('/update/:_id', (req, res) => {
         startDate: req.body.startDate,
         endDate : req.body.endDate,
         infoDate : req.body.infoDate
-    }}, (err, card) => {
+    }}, {new: true}, (err, card) => {
         if(err)
             return res.status(400).json({ success: false });
         
@@ -48,7 +48,7 @@ router.patch('/update/state/:_id', (req, res) => {
         infoDate : req.body.infoDate,
         process : req.body.process,
         result: req.body.result
-    }}, (err, card) => {
+    }}, {new: true},(err, card) => {
         if(err)
             return res.status(400).json({ success: false });
         

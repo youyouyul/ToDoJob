@@ -6,7 +6,7 @@ import { RESUME, TEST, INTERVIEW, FINAL,
          DOING, WAITING, IN, OUT ,
          processCode } from '../../../Config';
 
-const UpdateCard = ({ cards, onClick }) => {
+const UpdateCard = ({ cards, onClick, onClickModalState }) => {
 
     const card = cards[0];
 
@@ -14,6 +14,10 @@ const UpdateCard = ({ cards, onClick }) => {
     const [process, setProcess] = useState(card.process);
     const [date, setDate] = useState("");
     const [infoDate, setInfoDate] = useState("");
+
+    const onClickState = () => {
+        onClickModalState(card._id, "UPDATE");
+    }
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -27,11 +31,11 @@ const UpdateCard = ({ cards, onClick }) => {
 
         Axios.patch('/api/cards/update/state/' + card._id, body)
             .then(response => {
-                console.log(response.data);
                 if(!response.data.success) {
                     alert("수정을 실패했습니다.")
                 } 
-                window.location.reload();
+                onClick(card._id, response.data.card);
+                onClickState();
             })
     }
 
@@ -40,7 +44,7 @@ const UpdateCard = ({ cards, onClick }) => {
             <div className={ modalStyle.modal }>
                 <div className={ modalStyle.modalHeader}>
                     <p>{ card.companyName }</p>
-                    <button onClick={onClick}><FaTimes/></button>
+                    <button onClick={onClickState}><FaTimes/></button>
                 </div>
                 <div className={ modalStyle.modalBody}>
                     <form className={ modalStyle.modalForm }

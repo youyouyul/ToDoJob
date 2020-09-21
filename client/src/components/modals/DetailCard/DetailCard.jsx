@@ -4,7 +4,7 @@ import modalStyle from '../../modals/modals.module.css';
 import { FaTimes } from 'react-icons/fa';
 import Axios from 'axios';
 
-const DetailCard = ({ cards, onClick }) => {
+const DetailCard = ({ cards, onClick, onClickModalState }) => {
     const card = cards[0];
     const [modalState, setModalState] = useState(true);
 
@@ -21,7 +21,6 @@ const DetailCard = ({ cards, onClick }) => {
     const positionRef = useRef();
 
     useEffect(() => {
-        console.log(1);
         if(modalState) {
             urlRef.current.readOnly = true;
             startRef.current.readOnly = true;
@@ -29,7 +28,7 @@ const DetailCard = ({ cards, onClick }) => {
             infoRef.current.readOnly = true;
             positionRef.current.readOnly = true;
         }
-    }, modalState);
+    }, [modalState]);
 
     const setState = useCallback(
         (state) => {
@@ -41,6 +40,10 @@ const DetailCard = ({ cards, onClick }) => {
         },
         [],
     )
+
+    const onClickState = () => {
+        onClickModalState(card._id, "DETAIL");
+    }
 
     const onClickUpd = (e) => {
         e.preventDefault();
@@ -54,7 +57,10 @@ const DetailCard = ({ cards, onClick }) => {
             .then(response => {
                 if(!response.data.success)
                     alert("삭제를 실패했습니다.");
-                else window.location.reload();
+                else {
+                    onClick(card._id, response.data.card);
+                    onClickState();
+                }
             })
     }
 
@@ -73,8 +79,10 @@ const DetailCard = ({ cards, onClick }) => {
             .then(response => {
                 if(!response.data.success) {
                     alert("수정을 실패했습니다.");
-                } else 
-                    window.location.reload();
+                } else {
+                    onClick(card._id, response.data.card);
+                    onClickState();
+                }
             })
     }
 
@@ -83,7 +91,7 @@ const DetailCard = ({ cards, onClick }) => {
             <div className={ `${ modalStyle.modal } ${ fontStyle.sunflower }`}>
                 <div className={ modalStyle.modalHeader}>
                     <p>{ modalState ?  card.companyName : card.companyName + "  수정" }</p>
-                    <button onClick={onClick} ><FaTimes/></button>
+                    <button onClick={onClickState} ><FaTimes/></button>
                 </div>
                 <div className={ modalStyle.modalBody}>
                     <form className={ modalStyle.modalForm }

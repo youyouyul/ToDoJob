@@ -40,7 +40,6 @@
         > 공고 등록 
         > - 기능 : 등록
         > - 구현 : 헤더의 등록 버튼 통해 모달 창 열어서 새로운 공고 등록
-         <img src="https://user-images.githubusercontent.com/53922357/93727174-e2918100-fbf4-11ea-885a-05d7bddf90f2.png" style="width: 40%; margin-left: 30%">
 
 
 

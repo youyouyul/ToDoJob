@@ -1,13 +1,11 @@
 import React from 'react'
-import { RESUME, TEST, INTERVIEW, FINAL,
-         stateCode, 
-         processCode, resultCode} from '../../../Config';
+import { RESUME, processCode, resultCode} from '../../../Config';
 import applyStyle from '../Application/application.module.css';
 import fontStyle from '../../../assets/css/fonts.module.css';
-import { FaCalendarCheck, FaRegUser} from 'react-icons/fa';
+import { FaCalendarCheck, FaHome} from 'react-icons/fa';
 import { ImQuotesLeft, ImQuotesRight } from 'react-icons/im';
 
-const Card = ({card, onClick, style}) => {
+const Card = ({card, onClickModalState, style}) => {
 
     const startDate = card.startDate.substring(0, 10);
     const endDate = card.endDate.substring(0, 10);
@@ -21,7 +19,7 @@ const Card = ({card, onClick, style}) => {
             return "D - " + dur;
         else if(dur === 0) return "D-day";
         else {
-            if(card.infoDate !== '') return "발표 : " + card.infoDate;
+            if(card.infoDate !== "" & card.infoDate !== null) return "발표 : " + card.infoDate.substring(0, 10);
             else return "D + " + (dur * -1);
         }
     }
@@ -34,13 +32,11 @@ const Card = ({card, onClick, style}) => {
         }
     }
 
-    const position = card.jobPosition.length > 20 ? card.jobPosition.substring(0, 20) + "..." : card.jobPosition;
-
-    const showState = () => {
-        if(card.state === 2){
+    const showResult = () => {
+        if(card.result > 1){
             return processCode(card.process) + " " + resultCode(card.result);
         }
-        return stateCode(card.state);
+        return resultCode(card.result);
     }
 
     const quotesStyle = {
@@ -53,28 +49,20 @@ const Card = ({card, onClick, style}) => {
             <div className={ applyStyle.cardInfo }>
                 <div className={ `${applyStyle.companyName} ${fontStyle.jua}` }>
                     <ImQuotesLeft style={quotesStyle}/>
-                    <span>
-                         <a href={card.companyUrl}>{card.companyName}</a>
-                    </span>
+                    <span onClick={() => onClickModalState(card._id, "DETAIL")}>{ card.companyName }</span>
                     <ImQuotesRight style={quotesStyle}/>
                 </div>
+                <div className={ applyStyle.companyUrl }>
+                    <FaHome/> <a href={ card.companyUrl } className={ fontStyle.sunflower }>홈페이지</a>
+                </div>
                 <div className={ applyStyle.date }>
-                    {/*
-                        상태에 따라 변경 
-                        서류 : startDate ~ endDate
-                        시험 : 시험 날짜 
-                        면접 : 면접 날짜 
-                    */}
                     <FaCalendarCheck /> { showDate() }
                 </div>
                 <div className={`${ applyStyle.duration } ${ fontStyle.hiMelody}`}>
                     { duration() }
                 </div>
-                <div className={ applyStyle.position }>
-                    <FaRegUser/> {position}
-                </div>
-                <div className={`${ applyStyle.cardState } ${ fontStyle.sunflower }`} onClick={() => onClick(card._id)}>
-                    { showState() }
+                <div className={`${ applyStyle.cardState } ${ fontStyle.sunflower }`} onClick={() => onClickModalState(card._id, "UPDATE")}>
+                    { showResult() }
                 </div>
             </div>
         </div> 

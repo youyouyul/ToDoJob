@@ -2,13 +2,14 @@ export const USER_SERVER = '/api/users';
 export const TODO_SERVER = '/api/todos';
 export const CARD_SERVER = '/api/cards';
 
-export const PREPARING = 0;
-export const WAITING = 1;
-export const DONE = 2;
+// export const PREPARING = 0;
+// export const WAITING = 1;
+// export const DONE = 2;
 
 export const DOING = 0;
-export const IN = 1;
-export const OUT = 2;
+export const WAITING = 1;
+export const IN = 2;
+export const OUT = 3;
 
 export const RESUME = 0;
 export const TEST = 1;
@@ -48,8 +49,10 @@ export function resultCode(code) {
         case 0:
             return "진행 중";
         case 1:
-            return "합격";
+            return "대기 중";
         case 2:
+            return "합격";
+        case 3:
             return "탈락";
         default:
             break;

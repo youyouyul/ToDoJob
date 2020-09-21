@@ -8,8 +8,7 @@ import { FaRegEdit, FaRegTrashAlt, FaLocationArrow, FaRegCalendarCheck, FaRegUse
 import { ImQuotesLeft, ImQuotesRight } from 'react-icons/im';
 import ResumeList from './ResumeList';
 
-function ResumePage({ match }) {
-    const companyId = match.params.companyId;
+function ResumePage() {
 
     const card = {
         _id: 1,

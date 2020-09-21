@@ -26,17 +26,14 @@ router.post('/insert', (req, res) => {
 })
 
 // card 수정
-router.put('/update', (req, res) => {
-    Card.findOneAndUpdate({ _id: req.body._id }, { $set : {
-        startDate: req.body.startDate,
-        endDate : req.body.endDate,
-        infoDate : req.body.infoDate,
+router.patch('/update/:_id', (req, res) => {
+    Card.findByIdAndUpdate({ _id: req.params._id }, { $set : {
         companyUrl: req.body.companyUrl,
         jobPosition : req.body.jobPosition,
-        process : req.body.process,
-        state : req.body.state,
-        result: req.body.result
-    }}, (err, card) => {
+        startDate: req.body.startDate,
+        endDate : req.body.endDate,
+        infoDate : req.body.infoDate
+    }}, {new: true}, (err, card) => {
         if(err)
             return res.status(400).json({ success: false });
         
@@ -44,8 +41,24 @@ router.put('/update', (req, res) => {
     })
 })
 
-router.delete('/delete', (req, res) => {
-    Card.remove({ _id: re1.body._id }, (err) => {
+// card state 수정
+router.patch('/update/state/:_id', (req, res) => {
+    Card.findByIdAndUpdate({ _id: req.params._id }, { $set : {
+        endDate : req.body.endDate,
+        infoDate : req.body.infoDate,
+        process : req.body.process,
+        result: req.body.result
+    }}, {new: true},(err, card) => {
+        if(err)
+            return res.status(400).json({ success: false });
+        
+        return res.status(200).json({ success: true, card });
+    })
+})
+
+// card 삭제
+router.delete('/delete/:_id', (req, res) => {
+    Card.findByIdAndDelete({ _id: req.params._id }, (err) => {
         if(err)
             return res.status(400).json({ success: false });
 

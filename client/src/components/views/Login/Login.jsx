@@ -33,7 +33,7 @@ function Login(props) {
                 if(response.payload.loginSuccess) {
                     history.push('/' + response.payload.name);
                 } else {
-                    alert('Login Error');
+                    alert(response.payload.message);
                 }
             });
     }

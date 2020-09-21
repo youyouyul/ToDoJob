@@ -5,7 +5,7 @@ import { auth } from '../src/_actions/user_action';
 
 export default function(Component, option) {
 
-    function AuthCheck(props) {
+    function AuthCheck() {
 
         const dispatch = useDispatch();
         const history = useHistory();
@@ -18,13 +18,9 @@ export default function(Component, option) {
                         history.push('/login');
                     }
                 } else {
-                    if(!option) {
-                        console.log(response.payload.name)
-                        history.push('/' + response.payload.name);
-                    }
+                    history.push('/' + response.payload.name);
                 }
             })
-
         }, []);
 
         return (

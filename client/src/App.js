@@ -17,7 +17,7 @@ function App() {
           <Route exact path="/" component={Auth(StartPage, false)} />
           <Route exact path="/login" component={Auth(Login, false)} />  
           <Route exact path="/register" component={Auth(Register, false)} />
-          <Route exact path="/:userName" component={Dashboard} />    
+          <Route exact path="/:userName" component={Auth(Dashboard, true)} />    
         </Switch>
       </div>
     </Suspense>

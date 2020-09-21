@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { registerUser } from '../../../_actions/user_action';
 import regStyle from '../Login/login.module.css';
 import fontStyle from '../../../assets/css/fonts.module.css';
 
 function Register(props) {
+    const history = useHistory();
     const dispatch = useDispatch();
 
     const [email, setEmail] = useState('');
@@ -44,7 +46,7 @@ function Register(props) {
         dispatch(registerUser(body))
             .then(response => {
                 if(response.payload.success) {
-                    props.history.push('/login');
+                    history.push('/login');
                 } else {
                     alert('회원가입 실패하였습니다.');
                 }

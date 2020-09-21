@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../../../_actions/user_action';
 import fontStyle from '../../../assets/css/fonts.module.css';
 import loginStyle from '../Login/login.module.css';
 
 function Login(props) {
+    const history = useHistory();
     const dispatch = useDispatch();
 
     const [email, setEmail] = useState('');
@@ -29,7 +31,7 @@ function Login(props) {
         dispatch(loginUser(body))
             .then(response => {
                 if(response.payload.loginSuccess) {
-                    props.history.push('/' + response.payload.name);
+                    history.push('/' + response.payload.name);
                 } else {
                     alert('Login Error');
                 }

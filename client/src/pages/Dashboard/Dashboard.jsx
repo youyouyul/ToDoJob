@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import Header from '../../components/layout/Header/Header';
 import Footer from '../../components/layout/Footer/Footer';
 import ToDoList from '../../components/views/ToDoList/ToDoList';
@@ -11,8 +12,10 @@ import { RESUME, TEST, INTERVIEW, FINAL } from '../../Config';
 
 
 
-function Dashboard({ match }) {
-    const userName = match.params.userName;
+function Dashboard() {
+
+    const param = useParams();
+    const userName = param.userName;
 
     const [state, setState] = useState(false);
 

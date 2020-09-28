@@ -77,11 +77,11 @@ const UpdateCard = ({ cards, onClick, onClickModalState }) => {
                             <div className={ modalStyle.date }>
                                 <div style={{ marginRight: '0.5rem'}}>
                                     <label>날짜 *</label>
-                                    <input value={date} onChange={(e) => setDate(e.target.value)} required/>    
+                                    <input value={date} onChange={(e) => setDate(e.target.value)} placeholder="0000-00-00" required/>    
                                 </div>
                                 <div>
                                     <label>발표일</label>
-                                    <input value={infoDate} onChange={(e) => setInfoDate(e.target.value)}/>
+                                    <input value={infoDate} onChange={(e) => setInfoDate(e.target.value)} placeholder="0000-00-00"/>
                                 </div>
                             </div>
                         </div>
